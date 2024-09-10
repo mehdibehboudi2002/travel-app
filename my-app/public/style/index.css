@@ -1,0 +1,11 @@
+.btn-shadow {
+    box-shadow:  rgb(217, 255, 231) 0px 2px 4px 0px, rgb(151, 255, 188) 0px 0px 0px 1px inset;
+}
+
+.hero-map {
+    background-image: url("../images/hero.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right bottom;
+    margin-top: 6rem;
+}

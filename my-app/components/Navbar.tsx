@@ -4,10 +4,11 @@ import logo from "../public/images/hilink-logo.svg";
 import menu from "../public/images/menu.svg";
 import { NAV_LINKS } from "@/constants";
 import Button from "./Button";
+import UserIcon from "@/public/images/user";
 
 const Navbar = () => {
     return <>
-        <nav className="flex justify-between items-center relative padding-container">
+        <nav className="flex justify-between items-center padding-container bg-white opacity-90 border-b border-neutral-100 sticky top-0 z-[100]">
             <Link href="/">
                 <Image src={logo} alt="logo" className="w-[60px] h-[23px] xl:w-[74px] xl:h-[29px]" />
             </Link>
@@ -24,16 +25,17 @@ const Navbar = () => {
                 <Button
                     type="button"
                     title="Login"
-                    icon="/user.svg"
-                    variant="bg-green-90 py-2 px-4 xl:px-8 xl:py-4 text-white transition-all hover:bg-black"
+                    icon={<UserIcon className="size-5 xl:size-6" stroke1="#fff" stroke2="#fff"/>}
+                    variant="bg-green-890 py-2 px-4 xl:px-8 xl:py-4 text-white transition-all hover:bg-black"
+                    extraStyles="transition-all duration-300"
                 />
             </div>
 
             <Image
                 src={menu}
                 alt="menu"
-                width={26}
-                height={26}
+                width={24}
+                height={24}
                 className="inline-block cursor-pointer lg:hidden"
             />
         </nav>
