@@ -5,7 +5,7 @@ import React from 'react';
 
 const Features = () => {
   return (
-    <section className="flex-col flexCenter overflow-hidden  bg-center bg-no-repeat pb-10 shadow-md">
+    <section className="flex-col flexCenter overflow-hidden bg-center bg-no-repeat pb-10 md:pt-10 md:pb-20 shadow-md">
       <div className="max-container relative w-full flex justify-end">
         <div className="lg:min-h-[900px] flex flex-1">
           <Image

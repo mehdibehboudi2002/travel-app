@@ -55,7 +55,7 @@ const CampSite = ({ backgroundImage, title, subtitle, peopleJoined }: CampProps)
 
 const Camp = () => {
   return (
-    <section className="relative flex flex-col py-10 xl:py-20 px-0 xl:px-20 md:mt-48 lg:mt-0 xl:mt-48 shadow-md">
+    <section className="relative flex flex-col pb-10 md:pb-20 px-0 xl:px-20 md:mt-48 lg:mt-0 xl:mt-48 shadow-md">
       <div className="hide-scrollbar lg:h-[400px] xl:h-[640px] flex h-[340px] w-full items-start justify-start gap-8 overflow-x-auto">
         {
           EVERY_MAP.map((item) => (

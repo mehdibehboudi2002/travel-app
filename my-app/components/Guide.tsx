@@ -6,7 +6,7 @@ import React from 'react';
 
 const Guide = () => {
   return (
-    <section className="flexCenter flex-col mb-10 pb-10 shadow-md">
+    <section className="flexCenter flex-col mb-10 pb-10 md:pt-10 md:pb-20 shadow-md">
       <div className="padding-container max-container w-full pb-24">
         <Image src={camp} alt="camp" width={50} height={50} className='-mb-[3.1rem] lg:-mb-[3.6rem]'/>
         <p className="uppercase regular-18 -mt-1 mb-3 text-green-50">
