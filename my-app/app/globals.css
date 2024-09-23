@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -10,27 +10,74 @@
   box-sizing: border-box;
 }
 
-body{
-  background-image: url('../public/images/hero.png');
-}
-
 @layer utilities {
-  .btn_white { 
-    @apply  border-white bg-white px-8 py-3 text-green-50
+  .btn_white {
+    @apply border-white bg-white px-8 py-3 text-green-50;
   }
-  .btn_white_text  { 
-    @apply  border-white bg-white px-8 py-3 text-gray-90
+  .btn_white_text {
+    @apply border-white bg-white px-8 py-5 text-gray-90;
   }
-  .btn_green  { 
-    @apply  border-green-550 bg-green-550 px-8 py-5 text-white
+  .btn_white_text_hover {
+    @apply border-white bg-white px-8 py-5 text-gray-90;
   }
-  .btn_dark_green { 
-    @apply  bg-green-90 px-8 py-4 text-white transition-all hover:bg-black
+  .btn_green {
+    @apply border-green-550 bg-green-550 px-8 py-5 text-white;
   }
-  .btn_dark_green_outline  { 
-    @apply border-gray-20 bg-green-90 px-8 py-5 text-white
+  .btn_green_hover {
+    @apply border-green-550 bg-green-550 px-8 py-5 text-white;
   }
-  
+  .btn_dark_green {
+    @apply bg-green-890 px-8 py-4 text-white transition-all hover:bg-black;
+  }
+  .btn_dark_green_outline {
+    @apply border-gray-20 bg-green-890 px-8 py-5 text-white;
+  }
+
+  .btn_dark_green_outline {
+    @apply border-gray-20 bg-green-890 px-8 py-5 text-white relative;
+  }
+
+  .btn_dark_green_outline {
+    @apply border-gray-20 bg-green-890 px-8 py-5 text-white relative;
+    position: relative;
+    z-index: 1;
+  }
+
+
+  .btn_hover {
+    position: relative;
+  }
+
+  .btn_hover::before {
+    content: "";
+    position: absolute;
+    top: -2.2px;
+    left: -2.2px;
+    right: -2.2px;
+    bottom: -2.2px;
+    border-radius: 50px;
+    border: 4px solid transparent;
+    background: linear-gradient(90deg, #97ffbc, #fd69ba, #b470fd, #86efac);
+    background-size: 250% 250%;
+    animation: rotate-border-colors 2s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes rotate-border-colors {
+    0% {
+      background-position: 50% 50%;
+    }
+    100% {
+      background-position: 200% 200%;
+    }
+  }
+
+  .btn_hover button {
+    position: relative;
+  }
+
+
+
   .max-container {
     @apply mx-auto max-w-[1540px];
   }
@@ -149,7 +196,7 @@ body{
 
   /* Get App */
   .get-app {
-    @apply max-container relative flex w-full  flex-col justify-between gap-32 overflow-hidden bg-green-90 bg-pattern bg-cover bg-center bg-no-repeat px-6 py-12 text-white sm:flex-row sm:gap-12 sm:py-24 lg:px-20 xl:max-h-[598px] 2xl:rounded-5xl;
+    @apply w-full flex-col justify-between gap-32 overflow-hidden bg-cover bg-center bg-no-repeat px-6 py-10 md:py-20 sm:flex-row sm:gap-12 lg:px-20 xl:max-h-[598px] relative flex;
   }
 }
 

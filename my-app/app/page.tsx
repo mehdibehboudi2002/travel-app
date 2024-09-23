@@ -1,10 +1,13 @@
-import Camp from "@/components/Camp";
-import Features from "@/components/Features";
-import GetApp from "@/components/GetApp";
-import Guide from "@/components/Guide";
-import Hero from "@/components/Hero";
+"use client";
+import Camp from "@/components/MainSections/Camp";
+import Features from "@/components/MainSections/Features";
+import Hero from "@/components/MainSections/Hero";
+import Guide from "@/components/MainSections/Guide";
+import GetApp from "@/components/MainSections/GetApp";
+import ScrollUp from "@/components/ScrollToSomeWhere/ScrollUp";
 
 export default function Home() {
+
   return (
     <>
       <Hero />
@@ -12,6 +15,7 @@ export default function Home() {
       <Guide />
       <Features />
       <GetApp />
+      <ScrollUp/>
     </>
   );
 }

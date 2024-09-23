@@ -16,7 +16,7 @@ module.exports = {
           10: '#EEEEEE',
           20: '#A2A2A2',
           30: '#7B7B7B',
-          50: '#585858',
+          40: '#585858',
           90: '#141414',
         },
         orange: {
@@ -26,14 +26,14 @@ module.exports = {
           70: '#021639',
         },
         yellow: {
-          50: '#FEC601',
+          550: '#FEC601',
         },
       },
       backgroundImage: {
         'bg-img-1': "url('/img-1.png')",
         'bg-img-2': "url('/img-2.png')",
         'feature-bg': "url('/feature-bg.png')",
-        pattern: "url('/pattern.png')",
+        'pattern': "url('/pattern.png')",
         'pattern-2': "url('/pattern-bg.png')",
       },
       screens: {
