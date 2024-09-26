@@ -6,7 +6,7 @@ import React from 'react';
 
 const Guide = () => {
   return (
-    <section className="w-full mt-14 md:mt-28 mb-10 md:mb-20 pb-5 md:pb-10 px-0 xl:px-20 shadow-md ">
+    <section className="w-full mt-12 md:mt-24 mb-8 md:mb-16 pb-5 md:pb-8 px-0 xl:px-20 shadow-md ">
 
 
       <div className="w-full flexCenter flex-col max-container relative">
@@ -19,7 +19,7 @@ const Guide = () => {
           
         />
 
-        <div className="mt-5 md:mt-0 md:absolute flex bg-white py-8 pl-5 pr-7 gap-3 rounded-3xl border shadow-md md:left-[5%] lg:top-20">
+        {/* <div className="mt-5 md:mt-0 md:absolute flex bg-white py-8 pl-5 pr-7 gap-3 rounded-3xl border shadow-md md:left-[5%] lg:top-20">
           <Image
             src={meter}
             alt="meter"
@@ -41,15 +41,15 @@ const Guide = () => {
               <h4 className="bold-20 mt-2 whitespace-nowrap">Wonorejo Pasuruan</h4>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
-      <div className="flexEnd mt-5 md:mt-10 px-0 md:px-6">
+      <div className="flexEnd mt-3 md:mt-8 px-0 md:px-6">
         <div className="w-full rounded-5xl p-8 xl:px-16 xl:py-16 relative overflow-hidden">
           <h2 className="regular-24 md:regular-32 2xl:regular-64 capitalize">
            <strong> Guide You </strong> to Easy Path
           </h2>
-          <p className="regular-14 xl:regular-16 mt-5">
+          <p className="regular-14 xl:regular-16 mt-4">
             Only with the hilink application you will no longer get lost and get lost again, because we already support offline maps when there is no internet connection in the field. Invite your friends, relatives and friends to have fun in the wilderness through the valley and reach the top of the mountain
           </p>
         </div>

@@ -4,10 +4,14 @@ import AppleIcon from '@/public/images/apple';
 import AndroidIcon from '@/public/images/android';
 import Button from '../Button/Button';
 
-const GetApp = () => {
+type GetAppProps = {
+  isGetAppDetailsPage?: boolean;
+}
+
+const GetApp = ({isGetAppDetailsPage} : GetAppProps) => {
   return (
     <section className="w-full flexCenter flex-col">
-      <div className="get-app">
+      <div className={`get-app py-5 md:py-16`}>
         <div className="w-full self-center flex flex-1 flex-col items-center justify-center gap-12 z-20">
 
           <div className='w-full'>

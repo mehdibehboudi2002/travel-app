@@ -4,6 +4,7 @@ import "../public/style/index.css";
 import Navbar from "@/components/MainSections/Navbar";
 import Footer from "@/components/MainSections/Footer";
 import { useState } from "react";
+import ScrollUp from "@/components/ScrollToSomeWhere/ScrollUp";
 
 export default function RootLayout({
   children,
@@ -24,6 +25,7 @@ export default function RootLayout({
         <main className="flex-grow relative overflow-hidden">
           {children}
         </main>
+        <ScrollUp />
         <Footer contactClicked={contactClicked} />
       </body>
     </html>

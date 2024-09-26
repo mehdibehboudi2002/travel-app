@@ -14,13 +14,14 @@ import youtube from "../public/images/youtube.svg";
 // NAVIGATION
 export const NAV_LINKS = [
   { href: "/", key: "home", label: "Home" },
+  { href: "/", key: "shop", label: "shop" },
   { href: "/about-Hilink", key: "how_hilink_work", label: "How Hilink Work?" },
   { href: "/services", key: "services", label: "Services" },
   { href: "/", key: "contact_us", label: "Contact Us" },
 ];
 
 export const SERVICES = {
-  title: 'Our Services',
+  title: "Our Services",
   sections: [
     {
       title: "Offline Maps",
@@ -45,18 +46,38 @@ export const PEOPLE_URL = [person1, person2, person3, person4];
 
 export const EVERY_MAP = [
   {
-    id: "Putuk Truno Camp",
-    backgroundImage: "/images/img-1.png",
-    title: "Putuk Truno Camp",
-    subtitle: "Prigen, Pasuruan",
-    peopleJoined: "50+ Joined",
-  },
-  {
-    id: "Mountain View Camp",
-    backgroundImage: "/images/img-2.png",
-    title: "Mountain View Camp",
-    subtitle: "Somewhere in the Wilderness",
+    id: "Veresk Bridge",
+    backgroundImage: "/images/veresk-bridge.jpg",
+    title: "Veresk Bridge",
+    subtitle: "Iran , Mazandaran Province",
     peopleJoined: "70+ Joined",
+    description:
+      "Mountain View Camp offers an enchanting escape in the heart of nature, where breathtaking vistas meet serene wilderness. Perfect for adventure seekers and relaxation enthusiasts alike, this camp provides a unique opportunity to immerse yourself in stunning landscapes and create unforgettable memories.",
+    countOfReviews: "198k",
+    qualityOfReviews: "Excellent Reviews",
+    lat: 35.903429,   
+    lng: 52.990879,
+    campGallery : [
+      "/images/veresk-bridge.jpg",
+      "/images/veresk-bridge2.jpg",
+    ]
+  },   
+  {
+    id: "Shirgah Jungles",
+    backgroundImage: "/images/shirgah-jungles.jpg",
+    title: "Shirgah Jungles",
+    subtitle: "Iran , Mazandaran Province",
+    peopleJoined: "50+ Joined",
+    description:
+      "Putuk Truno Camp Area offers an adventurous retreat surrounded by lush greenery and tranquil waterfalls. It is an ideal destination for nature lovers seeking a peaceful camping experience amidst scenic landscapes and serene trails.",
+    countOfReviews: "150k",
+    qualityOfReviews: "Excellent Reviews",
+    lat: 36.221031,   
+    lng: 52.809999,
+    campGallery : [
+      "/images/veresk-bridge.jpg",
+      "/images/veresk-bridge2.jpg",
+    ]
   },
 ];
 
