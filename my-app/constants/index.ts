@@ -55,13 +55,10 @@ export const EVERY_MAP = [
       "Mountain View Camp offers an enchanting escape in the heart of nature, where breathtaking vistas meet serene wilderness. Perfect for adventure seekers and relaxation enthusiasts alike, this camp provides a unique opportunity to immerse yourself in stunning landscapes and create unforgettable memories.",
     countOfReviews: "198k",
     qualityOfReviews: "Excellent Reviews",
-    lat: 35.903429,   
+    lat: 35.903429,
     lng: 52.990879,
-    campGallery : [
-      "/images/veresk-bridge.jpg",
-      "/images/veresk-bridge2.jpg",
-    ]
-  },   
+    campGallery: ["/images/veresk-bridge.jpg", "/images/veresk-bridge2.jpg"],
+  },
   {
     id: "Shirgah Jungles",
     backgroundImage: "/images/shirgah-jungles.jpg",
@@ -72,12 +69,9 @@ export const EVERY_MAP = [
       "Putuk Truno Camp Area offers an adventurous retreat surrounded by lush greenery and tranquil waterfalls. It is an ideal destination for nature lovers seeking a peaceful camping experience amidst scenic landscapes and serene trails.",
     countOfReviews: "150k",
     qualityOfReviews: "Excellent Reviews",
-    lat: 36.221031,   
+    lat: 36.221031,
     lng: 52.809999,
-    campGallery : [
-      "/images/veresk-bridge.jpg",
-      "/images/veresk-bridge2.jpg",
-    ]
+    campGallery: ["/images/veresk-bridge.jpg", "/images/veresk-bridge2.jpg"],
   },
 ];
 

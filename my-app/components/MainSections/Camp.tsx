@@ -216,21 +216,21 @@ const Camp = ({ isCampDetailsPage, }: CampProps) => {
           ref={scrollRef}
           className="hide-scrollbar w-full h-[340px] lg:h-[400px] xl:h-[640px] mt-5 pb-3 lg:pb-8 flex items-start justify-start gap-8 overflow-x-auto overflow-y-hidden cursor-pointer"
         >
-          {(searchTerm
-            ? EVERY_MAP.filter((camp) => camp.title.toLowerCase().includes(searchTerm.toLowerCase()))
-            : EVERY_MAP.concat(EVERY_MAP)
-          ).map((item, index) => (
-            <CampSite
-              key={index}
-              backgroundImage={item.backgroundImage}
-              title={item.title}
-              subtitle={item.subtitle}
-              peopleJoined={item.peopleJoined}
-              searchTerm={searchTerm}
-              onClick={handleClick(item.id.toLowerCase().replace(/\s+/g, "-"))}
-              isCampDetailsPage={isCampDetailsPage}
-            />
+          {EVERY_MAP.map((item, index) => (
+            item.campGallery.map((image, imgIndex) => (
+              <CampSite
+                key={`${index}-${imgIndex}`} 
+                backgroundImage={image}       
+                title={item.title}
+                subtitle={item.subtitle}
+                peopleJoined={item.peopleJoined}
+                searchTerm={searchTerm}
+                onClick={handleClick(item.id.toLowerCase().replace(/\s+/g, "-"))}
+                isCampDetailsPage={isCampDetailsPage}
+              />
+            ))
           ))}
+
         </div>}
 
       {!isCampDetailsPage && <div className="flexEnd mt-3 md:mt-8 px-0 md:px-6">
