@@ -49,7 +49,7 @@ const Features = () => {
   return (
     <section
       id="features-section"
-      className={`relative flex-col flexCenter overflow-hidden padding-container md:px-0 pb-8 md:pb-16 shadow-md`}
+      className={`relative flex-col flexCenter overflow-hidden padding-container md:px-0 shadow-md`}
     >
       <div className={`w-full max-container relative flex justify-end  ${isVisible ? 'animate-show' : 'animate-hide'
         }`}>
@@ -63,7 +63,7 @@ const Features = () => {
           />
         </div>
 
-        <div className="w-full lg:w-[60%] z-20 flex flex-col mb-8 md:mb-16">
+        <div className="w-full lg:w-[60%] z-20 flex flex-col mb-5 md:mb-8">
           <div className='relative'>
             <h2 className="w-full xl:ml-[4.5rem] bold-32 lg:bold-64 lg:rounded-3xl ">
               Our Features

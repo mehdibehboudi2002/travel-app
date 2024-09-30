@@ -1,16 +1,16 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { EVERY_MAP, PEOPLE_URL } from "@/constants";
+import { EVERY_CAMP, PEOPLE_URL } from "@/constants";
 import Image from "next/image";
 import foldedMap from "../../public/images/folded-map.svg";
 import quote from "../../public/images/quote.svg";
 import searchIcon from "../../public/images/search.svg";
 import arrowLeft from "../../public/images/arrow-left.svg";
 import campIcon from "../../public/images/camp.svg";
+import { useParams } from "next/navigation";
 
 type CampProps = {
   isCampDetailsPage: boolean;
-
 }
 
 type CampSiteProps = {
@@ -32,7 +32,6 @@ const CampSite = ({
   searchTerm,
   onClick,
   isCampDetailsPage,
-  campGallery,
 }: CampSiteProps) => {
 
   return (
@@ -76,7 +75,7 @@ const CampSite = ({
   );
 };
 
-const Camp = ({ isCampDetailsPage, }: CampProps) => {
+const Camp = ({ isCampDetailsPage }: CampProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isSearchIconClicked, setIsSearchIconClicked] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -85,7 +84,7 @@ const Camp = ({ isCampDetailsPage, }: CampProps) => {
   let clickTimeout: NodeJS.Timeout | null = null;
 
   const handleSingleClick = (slugifiedTitle: string) => {
-    window.location.href = `/camp/${slugifiedTitle}`;
+    window.location.href = `${slugifiedTitle}`;
   };
 
   const handleDoubleClick = () => {
@@ -116,8 +115,10 @@ const Camp = ({ isCampDetailsPage, }: CampProps) => {
       if (!isPaused && scrollContainer) {
         scrollContainer.scrollLeft += speed;
 
-        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
-          scrollContainer.scrollLeft = 0;
+        const maxScroll = scrollContainer.scrollWidth / 2;
+
+        if (scrollContainer.scrollLeft >= maxScroll) {
+          scrollContainer.scrollLeft -= maxScroll;
         }
       }
     };
@@ -127,13 +128,14 @@ const Camp = ({ isCampDetailsPage, }: CampProps) => {
     return () => clearInterval(interval);
   }, [isPaused]);
 
+
   useEffect(() => {
     if (searchTerm) {
-      const matchingCamps = EVERY_MAP.filter((camp) =>
+      const matchingCamps = EVERY_CAMP.filter((camp) =>
         camp.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
-      const matchingIndex = EVERY_MAP.findIndex((camp) =>
+      const matchingIndex = EVERY_CAMP.findIndex((camp) =>
         camp.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
@@ -148,6 +150,12 @@ const Camp = ({ isCampDetailsPage, }: CampProps) => {
       setIsPaused(false);
     }
   }, [searchTerm]);
+
+  const { id } = useParams();
+
+  const targetCamp = EVERY_CAMP.find((item) =>
+    item?.id && id && item.id.toLowerCase().replace(/\s+/g, "-") === id.toLowerCase()
+  );
 
   return (
     <section className="relative flex flex-col pb-5 md:pb-8 px-0 xl:px-20 shadow-md">
@@ -197,8 +205,8 @@ const Camp = ({ isCampDetailsPage, }: CampProps) => {
         className="hide-scrollbar w-full h-[340px] lg:h-[400px] xl:h-[640px] mt-5 pb-3 lg:pb-8 flex items-start justify-start gap-8 overflow-x-auto overflow-y-hidden cursor-pointer"
       >
         {(searchTerm
-          ? EVERY_MAP.filter((camp) => camp.title.toLowerCase().includes(searchTerm.toLowerCase()))
-          : EVERY_MAP.concat(EVERY_MAP)
+          ? EVERY_CAMP.filter((camp) => camp.title.toLowerCase().includes(searchTerm.toLowerCase()))
+          : EVERY_CAMP.concat(EVERY_CAMP)
         ).map((item, index) => (
           <CampSite
             key={index}
@@ -216,20 +224,22 @@ const Camp = ({ isCampDetailsPage, }: CampProps) => {
           ref={scrollRef}
           className="hide-scrollbar w-full h-[340px] lg:h-[400px] xl:h-[640px] mt-5 pb-3 lg:pb-8 flex items-start justify-start gap-8 overflow-x-auto overflow-y-hidden cursor-pointer"
         >
-          {EVERY_MAP.map((item, index) => (
-            item.campGallery.map((image, imgIndex) => (
+          {targetCamp ? (
+            targetCamp.campGallery.concat(targetCamp.campGallery).map((image, imgIndex) => (
               <CampSite
-                key={`${index}-${imgIndex}`} 
-                backgroundImage={image}       
-                title={item.title}
-                subtitle={item.subtitle}
-                peopleJoined={item.peopleJoined}
+                key={`${targetCamp.id}-${imgIndex}`}
+                backgroundImage={image}
+                title={targetCamp.title}
+                subtitle={targetCamp.subtitle}
+                peopleJoined={targetCamp.peopleJoined}
                 searchTerm={searchTerm}
-                onClick={handleClick(item.id.toLowerCase().replace(/\s+/g, "-"))}
+                onClick={handleClick(targetCamp.id.toLowerCase().replace(/\s+/g, "-"))}
                 isCampDetailsPage={isCampDetailsPage}
               />
             ))
-          ))}
+          ) : (
+            <p>Loading camp information...</p>
+          )}
 
         </div>}
 

@@ -2,10 +2,9 @@
 import Image from "next/image";
 import campIcon from "../../public/images/camp.svg";
 import PlayIcon from "@/public/images/play";
-import starIcon from "@/public/images/star.svg";
-import closeIcon from "@/public/images/close.svg";
 import { useEffect, useState } from "react";
 import Button from "../Button/Button";
+import BasicRating from "../Rating";
 
 type HeroProps = {
   isCampDetailsPage?: boolean;
@@ -27,7 +26,7 @@ const Hero = ({ isCampDetailsPage, countOfReviews, qualityOfReviews, campName, h
   }, [])
 
   return (
-    <section className={`padding-container mt-1 md:mt-5 ${isCampDetailsPage ? 'mb-40 xs:mb-52 2xs:mb-64 sm:mb-72 xl:mb-36' : 'mb-10 xs:mb-28 2xs:mb-40 sm:mb-80 xl:mb-36'} pt-10 pb-32`}>
+    <section className={`padding-container mt-1 md:mt-5 ${isCampDetailsPage ? 'mb-24 sm:mb-52' : 'mb-10 xs:mb-28 2xs:mb-40 sm:mb-80 xl:mb-36'} pt-10 pb-32`}>
       <div className="hero-map"></div>
 
       <div className={`flex flex-col items-center xs:items-start gap-10 transition-all duration-1000 ${heroAnimate ? 'opacity-1 translate-x-0' : 'opacity-0 translate-x-10'}`}>
@@ -46,26 +45,17 @@ const Hero = ({ isCampDetailsPage, countOfReviews, qualityOfReviews, campName, h
             {description}
           </p>}
 
+          
+            
+          
 
-          {isCampDetailsPage && <div className="mt-8 flex flex-wrap gap-5">
-            <div className="flex gap-2">
-              {Array(5).fill(1).map((_, index) => (
-                <Image
-                  src={starIcon}
-                  key={index}
-                  alt="star"
-                  width={24}
-                  height={24}
-                />
-              ))}
+
+          {isCampDetailsPage && <div className="flex flex-wrap gap-5">
+            <div className="flex flex-col gap-2">
+            <BasicRating ratable={true} ratingTxt="Your Reviews" className="mt-8"/>
+              <BasicRating ratable={false} ratingTxt={`${countOfReviews} ${qualityOfReviews}`} className="mt-8"/>
             </div>
 
-            <p className="bold-16 lg:bold-20 text-blue-70">
-              {countOfReviews}
-              <span className="regular-16 lg:regular-20 ml-1">
-                {qualityOfReviews}
-              </span>
-            </p>
           </div>}
 
           {hasButton && <div className="w-full sm:w-1/2 md:w-full mt-8 flex flex-col sm:flex-row gap-3">
@@ -75,26 +65,6 @@ const Hero = ({ isCampDetailsPage, countOfReviews, qualityOfReviews, campName, h
 
 
         </div>
-
-        {isCampDetailsPage && <div className="flex relative">
-          <div className="w-[248px] sm:w-[268px] relative z-20 flex flex-col gap-8 rounded-3xl bg-green-890 py-6 px-4 sm:py-8 sm:px-6">
-
-            <div className="flex flex-col">
-              <div className="flexBetween">
-                <p className="text-gray-20">Location</p>
-                <Image className="size-5 sm:size-6 cursor-pointer" src={closeIcon} alt="close" />
-              </div>
-              <p className="bold-16 sm:bold-20 text-white">Aguas Calientes</p>
-            </div>
-
-            <div className="flexBetween">
-              <div className="flex flex-col">
-                <p className="block text-gray-20">Elevation</p>
-                <p className="bold-16 sm:bold-20 text-white">2.040 km</p>
-              </div>
-            </div>
-          </div>
-        </div>}
       </div>
     </section>
   )

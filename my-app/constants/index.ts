@@ -44,7 +44,7 @@ export const SERVICES = {
 // CAMP SECTION
 export const PEOPLE_URL = [person1, person2, person3, person4];
 
-export const EVERY_MAP = [
+export const EVERY_CAMP = [
   {
     id: "Veresk Bridge",
     backgroundImage: "/images/veresk-bridge.jpg",
@@ -71,7 +71,7 @@ export const EVERY_MAP = [
     qualityOfReviews: "Excellent Reviews",
     lat: 36.221031,
     lng: 52.809999,
-    campGallery: ["/images/veresk-bridge.jpg", "/images/veresk-bridge2.jpg"],
+    campGallery: ["/images/shirgah.jpg", "/images/shirgah2.jpg"],
   },
 ];
 

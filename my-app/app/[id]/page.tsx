@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { EVERY_MAP } from '@/constants';
+import { EVERY_CAMP } from '@/constants';
 import Hero from '@/components/MainSections/Hero';
 import Camp from '@/components/MainSections/Camp';
 import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
@@ -19,7 +19,7 @@ L.Icon.Default.mergeOptions({
 
 export default function CampPage() {
   const { id } = useParams();
-  const selectedCamp = EVERY_MAP.find(camp => camp.id.toLowerCase().replace(/\s+/g, '-') === id);
+  const selectedCamp = EVERY_CAMP.find(camp => camp.id.toLowerCase().replace(/\s+/g, '-') === id);
 
   const [userLocation, setUserLocation] = useState(null);
   const routingControlRef = useRef(null);
@@ -74,6 +74,7 @@ export default function CampPage() {
       <Hero
         isCampDetailsPage={true}
         campName={selectedCamp?.title}
+        hasButton={true}
         hasDescription={true}
         description={selectedCamp?.description}
         countOfReviews={selectedCamp?.countOfReviews}
