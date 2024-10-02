@@ -14,7 +14,7 @@ import youtube from "../public/images/youtube.svg";
 // NAVIGATION
 export const NAV_LINKS = [
   { href: "/", key: "home", label: "Home" },
-  { href: "/", key: "shop", label: "shop" },
+  { href: "/Hilink-shop", key: "shop", label: "shop" },
   { href: "/about-Hilink", key: "how_hilink_work", label: "How Hilink Work?" },
   { href: "/services", key: "services", label: "Services" },
   { href: "/", key: "contact_us", label: "Contact Us" },
@@ -204,6 +204,133 @@ export const PRIVACY_CONTENT = {
       title: "5. Contact Us",
       description:
         "If you have any questions about this Privacy Policy, please contact us at privacy@hilink.com.",
+    },
+  ],
+};
+
+//SHOP
+export const SHOP_ITEMS = {
+  items: [
+    {
+      title: "travel tent",
+      imageUrl: "/images/veresk-bridge.jpg",
+      price: "70.000",
+      description: "",
+    },
+    {
+      title: "travel tent",
+      imageUrl: "/images/veresk-bridge.jpg",
+      price: "70.000",
+      description: "",
+    },
+    {
+      title: "travel tent",
+      imageUrl: "/images/veresk-bridge.jpg",
+      price: "70.000",
+      description: "",
+    },
+    {
+      title: "travel tent",
+      imageUrl: "/images/veresk-bridge.jpg",
+      price: "70.000",
+      description: "",
+    },
+    {
+      title: "travel tent",
+      imageUrl: "/images/veresk-bridge.jpg",
+      price: "70.000",
+      description: "",
+    },
+    {
+      title: "travel tent",
+      imageUrl: "/images/veresk-bridge.jpg",
+      price: "70.000",
+      description: "",
+    },
+    {
+      title: "travel tent",
+      imageUrl: "/images/veresk-bridge.jpg",
+      price: "70.000",
+      description: "",
+    },
+    {
+      title: "travel tent",
+      imageUrl: "/images/veresk-bridge.jpg",
+      price: "70.000",
+      description: "",
+    },
+  ],
+};
+
+
+export const SHOP_CATEGORIES = {
+  categories: [
+    {
+      category: "tents",
+      categoryImage: "/images/tent1.jpg",
+      id: "tents",
+      products: [
+        {
+          id: 1,
+          name: "Person Camping Tent",
+          price: '150$',
+          description:
+            "A spacious tent for up to 4 people with waterproof protection.",
+          image: "/images/tent1.jpg",
+        },
+        {
+          id: 2,
+          name: "Person Backpacking Tent",
+          price: '100$',
+          description:
+            "A lightweight and compact tent for backpacking adventures.",
+            image: "/images/tent2.jpg",
+        },
+      ],
+    },
+
+    {
+      category: "cooking-gears",
+      categoryImage: "/images/cooking-gears1.jpg",
+      id: "cooking-gears",
+      products: [
+        {
+          id: 3,
+          name: "Portable Gas Stove",
+          price: '45$',
+          description: "A compact and portable stove for outdoor cooking.",
+          image: "/images/cooking-gears1.jpg",
+        },
+        {
+          id: 4,
+          name: "Camping Cookware Set",
+          price: '30$',
+          description: "Includes pots, pans, and utensils for outdoor cooking.",
+          image: "/images/cooking-gears2.jpg",
+        },
+      ],
+    },
+
+    {
+      category: "bags",
+      categoryImage: "/images/bag1.jpg",
+      id: "bags",
+      products: [
+        {
+          id: 5,
+          name: "Waterproof Hiking Backpack",
+          price: '60$',
+          description: "A durable and waterproof backpack for hiking trips.",
+          image: "/images/bag1.jpg",
+        },
+        {
+          id: 6,
+          name: "Camping Handbag",
+          price: '40$',
+          description: "A lightweight and foldable daypack for short trips.",
+          image: "/images/bag2.jpg",
+        },
+      ],
     },
   ],
 };

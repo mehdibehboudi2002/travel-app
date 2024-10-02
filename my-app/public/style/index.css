@@ -23,9 +23,23 @@
 
 .animate-show {
   opacity: 1;
-  transform: translateY(0);
   transition: all 0.8s ease-out;
 }
+
+.fade-in-animation {
+  opacity: 0;
+  animation: fadeInSlideShow 0.8s ease forwards;
+}
+
+@keyframes fadeInSlideShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 
 
