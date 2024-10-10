@@ -34,7 +34,7 @@ const ScrollUp = () => {
     return (
         <div className="top-to-btm">
             <div
-                className={`icon-position icon-style btn-shadow bg-green-550 text-white p-[.1rem] md:p-[.2rem] lg:p-[.45rem] fixed bottom-1 right-1 md:bottom-3 md:right-3 lg:bottom-5 lg:right-5 cursor-pointer  rounded-full transition-all duration-300 z-[500] ${showTopBtn ? 'opacity-100' : 'opacity-0'}`}
+                className={`icon-position icon-style btn-shadow bg-green-550 text-white p-[.1rem] md:p-[.2rem] lg:p-[.35rem] xl:p-[.45rem] fixed bottom-1 right-1 lg:bottom-3 lg:right-3 cursor-pointer  rounded-full transition-all duration-300 z-[500] ${showTopBtn ? 'opacity-100' : 'opacity-0'}`}
                 onClick={goToTop}
             >
                 <Image src={arrowTop} alt='top' />

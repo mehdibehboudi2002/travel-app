@@ -14,7 +14,7 @@ const Shop = () => {
   return (
     <>
       <section className="w-full max-container">
-        <div className="size-full flex justify-center flex-wrap my-6">
+        <div className="size-full flex justify-center flex-wrap my-0 lg:my-6">
           {SHOP_CATEGORIES.categories.map((category, index) => {
             const itemsPerRow = 4;
             const isLastRow =

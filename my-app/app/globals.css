@@ -10,21 +10,25 @@
   box-sizing: border-box;
 }
 
+body{
+  overflow-x: hidden;
+}
+
 @layer utilities {
   .btn_white {
     @apply border-white bg-white px-8 py-3 text-green-50;
   }
   .btn_white_text {
-    @apply border-white bg-white px-8 py-5 text-gray-90;
+    @apply border-white bg-white text-black;
   }
   .btn_white_text_hover {
-    @apply border-white bg-white px-8 py-5 text-gray-90;
+    @apply border-white bg-white text-black;
   }
   .btn_green {
-    @apply border-green-550 bg-green-550 px-8 py-5 text-white;
+    @apply border-green-550 bg-green-550 text-white;
   }
   .btn_green_hover {
-    @apply border-green-550 bg-green-550 px-8 py-5 text-white;
+    @apply border-green-550 bg-green-550 text-white;
   }
   .btn_dark_green {
     @apply bg-green-890 px-8 py-4 text-white transition-all hover:bg-black;

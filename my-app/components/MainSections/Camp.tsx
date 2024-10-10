@@ -222,7 +222,7 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
       </div> :
         <div
           ref={scrollRef}
-          className="hide-scrollbar w-full h-[340px] lg:h-[400px] xl:h-[640px] mt-5 pb-3 lg:pb-8 flex items-start justify-start gap-8 overflow-x-auto overflow-y-hidden cursor-pointer"
+          className="hide-scrollbar w-full h-[340px] lg:h-[400px] xl:h-[640px] mt-5 ] flex items-start justify-start gap-8 overflow-x-auto overflow-y-hidden cursor-pointer"
         >
           {targetCamp ? (
             targetCamp.campGallery.concat(targetCamp.campGallery).map((image, imgIndex) => (
@@ -232,7 +232,7 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
                 title={targetCamp.title}
                 subtitle={targetCamp.subtitle}
                 peopleJoined={targetCamp.peopleJoined}
-                searchTerm={searchTerm}
+               searchTerm={searchTerm}
                 onClick={handleClick(targetCamp.id.toLowerCase().replace(/\s+/g, "-"))}
                 isCampDetailsPage={isCampDetailsPage}
               />
