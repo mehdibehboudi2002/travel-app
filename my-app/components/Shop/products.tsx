@@ -2,11 +2,15 @@
 import { useParams } from "next/navigation";
 import { SHOP_CATEGORIES } from "@/constants";
 import Image from "next/image";
+import searchIcon from "../../public/images/search.svg";
+import arrowLeft from "../../public/images/arrow-left.svg";
 import { useEffect, useState } from "react";
 import { useCart } from "@/context/CartContext";
 
 const ShopProducts = () => {
   const [itemNums, setItemNums] = useState({});
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isSearchIconClicked, setIsSearchIconClicked] = useState(false);
   const { category } = useParams();
   const selectedCategory = SHOP_CATEGORIES.categories.find(
     (cat) => cat.category === category
@@ -42,18 +46,56 @@ const ShopProducts = () => {
     }));
   };
 
+  const filteredProducts = selectedCategory?.products.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <section className="w-full max-container">
+    <section className="w-full max-container flex flex-col items-center">
+      <div
+        className={`mt-5 pl-2 flex text-gray-40 rounded-full shadow-md transition-[width] duration-500 ease-in-out ${isSearchIconClicked ? 'w-[90%] sm:w-[50%] md:w-[37%] xl:w-[24%]' : 'w-[40px]'}`}
+      >
+        {!isSearchIconClicked ? (
+          <Image
+            className="size-6 my-2 cursor-pointer"
+            src={searchIcon}
+            alt="search"
+            onClick={() => {
+              setIsSearchIconClicked(true);
+            }}
+          />
+        ) : (
+          <Image
+            className="size-6 my-2 cursor-pointer"
+            src={arrowLeft}
+            alt="close"
+            onClick={() => {
+              setIsSearchIconClicked(false);
+              setSearchTerm(""); 
+            }}
+          />
+        )}
+
+        {isSearchIconClicked && (
+          <input
+            className="w-full pl-2 rounded-full outline-none"
+            type="text"
+            placeholder="search for products"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        )}
+      </div>
       <div className="size-full flex justify-center flex-wrap my-0 lg:my-6">
-        {selectedCategory?.products.map((item, index) => {
+        {filteredProducts.map((item, index) => {
           const itemsPerRow = 4;
           const isLastRow =
             index >=
-            selectedCategory.products.length -
-            (selectedCategory.products.length % itemsPerRow || itemsPerRow);
+            filteredProducts.length -
+            (filteredProducts.length % itemsPerRow || itemsPerRow);
           const isLastColumn = (index + 1) % itemsPerRow === 0;
           const isLastInLastRow =
-            isLastRow && (index + 1) === selectedCategory.products.length;
+            isLastRow && (index + 1) === filteredProducts.length;
 
           return (
             <div
@@ -107,6 +149,7 @@ const ShopProducts = () => {
 };
 
 export default ShopProducts;
+
 
 
 

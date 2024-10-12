@@ -43,7 +43,7 @@ const Cart = () => {
 
   return (
     <div className="w-full h-fit flex padding-container my-1 lg:my-7">
-      <div className="w-1/5 h-56 hidden lg:flex flex-col justify-between items-center rounded-2xl sticky top-32 p-4 shadow-md text-blue-70 text-sm">
+      <div className="w-1/5 h-56 hidden lg:flex flex-col justify-between items-center rounded-2xl sticky top-32 p-4 shadow-md text-blue-70 text-z">
         <p>Total Price: <span className="font-bold">${totalPrice}</span></p>
         <Button type="submit" color="green" title="Finish Your Purchase" />
       </div>

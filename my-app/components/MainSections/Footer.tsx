@@ -12,11 +12,11 @@ const Footer = ({ contactClicked }) => {
         if (contactClicked) {
             setTimeout(() => {
                 setIsHighlighted(true);
-            } , 690)
-            
+            }, 690)
+
             setTimeout(() => {
                 setIsHighlighted(false);
-            }, 2500);  
+            }, 2500);
         }
     }, [contactClicked]);
 
@@ -66,9 +66,9 @@ const Footer = ({ contactClicked }) => {
                         </p>
 
                         <div className='flex mt-3'>
-                            {SOCIALS.links.map((item) => (
-                                <Link href="/" key={item} className='size-7 lg:size-[2.35rem] p-[.4rem] lg:p-2 mx-1 sm:mr-3 rounded-full border border-gray-20 transition-all duration-300 hover:bg-green-550'>
-                                    <Image src={item} alt="logo" />
+                            {SOCIALS.links.map((item, index) => (
+                                <Link href={item.href} target='_blank' key={index} className='size-7 lg:size-[2.35rem] p-[.4rem] lg:p-2 mx-1 sm:mr-3 rounded-full border border-gray-20 transition-all duration-300 hover:bg-green-550'>
+                                    <Image src={item.image} alt="logo" />
                                 </Link>
                             ))}
                         </div>

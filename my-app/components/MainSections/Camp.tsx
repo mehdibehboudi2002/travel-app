@@ -160,11 +160,11 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
   return (
     <section className="relative flex flex-col pb-5 md:pb-8 px-0 xl:px-20 shadow-md">
       {!isCampDetailsPage ? <div
-        className={`px-2 mx-auto sm:mx-3 xl:mx-7 py-2 flex text-gray-40 rounded-full shadow-md transition-[width] duration-500 ease-in-out ${isSearchIconClicked ? 'w-[90%] sm:w-[24%]' : 'w-[40px]'}`}
+        className={`mx-auto sm:mx-3 xl:mx-7 pl-2 flex text-gray-40 rounded-full shadow-md transition-[width] duration-500 ease-in-out ${isSearchIconClicked ? 'w-[90%] sm:w-[50%] md:w-[37%] xl:w-[24%]' : 'w-[40px]'}`}
       >
         {!isSearchIconClicked ? (
           <Image
-            className="size-6 cursor-pointer"
+            className="size-6 my-2 cursor-pointer"
             src={searchIcon}
             alt="search"
             onClick={() => {
@@ -173,7 +173,7 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
           />
         ) : (
           <Image
-            className="size-6 cursor-pointer"
+            className="size-6 my-2 cursor-pointer"
             src={arrowLeft}
             alt="close"
             onClick={() => {
@@ -184,7 +184,7 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
 
         {isSearchIconClicked && (
           <input
-            className="w-full pl-2 text-center sm:text-start outline-none"
+            className="w-full pl-2 rounded-full outline-none"
             type="text"
             placeholder="search your camp"
             value={searchTerm}

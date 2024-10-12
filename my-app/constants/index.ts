@@ -128,7 +128,12 @@ export const FOOTER_CONTACT_INFO = {
 
 export const SOCIALS = {
   title: "Social",
-  links: [facebook, instagram, twitter, youtube],
+  links: [
+    { image: facebook, href: "https://www.facebook.com/" },
+    { image: instagram, href: "https://instagram.com/" },
+    { image: twitter, href: "https://twitter.com/" },
+    { image: youtube, href: "https://youtube.com/" },
+  ],
 };
 
 //PRESS-RELEASES
@@ -145,9 +150,15 @@ export const ABOUT_HILINK = {
 export const RELEASES = {
   title: "Our Releases",
   sections: [
-    { title: "New Feature Launch: Offline Maps", date: "September 18, 2024" },
-    { title: "Partnership with Adventure Tech Co.", date: "August 22, 2024" },
-    { title: "Hilink Wins Best Innovation Award", date: "July 15, 2024" },
+    {
+      title: "1. New Feature Launch: Offline Maps",
+      date: "September 18, 2024",
+    },
+    {
+      title: "2. Partnership with Adventure Tech Co.",
+      date: "August 22, 2024",
+    },
+    { title: "3. Hilink Wins Best Innovation Award", date: "July 15, 2024" },
   ],
 };
 
@@ -155,22 +166,22 @@ export const ENVIROMENT_COMMITMENTS = {
   title: "Our Environmental Commitments",
   sections: [
     {
-      title: "Reducing Carbon Footprint",
+      title: "1. Reducing Carbon Footprint",
       description:
         "Utilizing green technologies and optimizing energy consumption at Hilink.",
     },
     {
-      title: "Nature Conservation",
+      title: "2. Nature Conservation",
       description:
         "Preserving natural landscapes and minimizing the impact of hiking activities on the environment.",
     },
     {
-      title: "Environmental Projects",
+      title: "3. Environmental Projects",
       description:
         "Participating in tree planting projects and trail cleanups.",
     },
     {
-      title: "Sustainable Practices",
+      title: "4. Sustainable Practices",
       description:
         "Encouraging eco-friendly practices among our community of adventurers.",
     },
@@ -209,60 +220,6 @@ export const PRIVACY_CONTENT = {
 };
 
 //SHOP
-export const SHOP_ITEMS = {
-  items: [
-    {
-      title: "travel tent",
-      imageUrl: "/images/veresk-bridge.jpg",
-      price: "70.000",
-      description: "",
-    },
-    {
-      title: "travel tent",
-      imageUrl: "/images/veresk-bridge.jpg",
-      price: "70.000",
-      description: "",
-    },
-    {
-      title: "travel tent",
-      imageUrl: "/images/veresk-bridge.jpg",
-      price: "70.000",
-      description: "",
-    },
-    {
-      title: "travel tent",
-      imageUrl: "/images/veresk-bridge.jpg",
-      price: "70.000",
-      description: "",
-    },
-    {
-      title: "travel tent",
-      imageUrl: "/images/veresk-bridge.jpg",
-      price: "70.000",
-      description: "",
-    },
-    {
-      title: "travel tent",
-      imageUrl: "/images/veresk-bridge.jpg",
-      price: "70.000",
-      description: "",
-    },
-    {
-      title: "travel tent",
-      imageUrl: "/images/veresk-bridge.jpg",
-      price: "70.000",
-      description: "",
-    },
-    {
-      title: "travel tent",
-      imageUrl: "/images/veresk-bridge.jpg",
-      price: "70.000",
-      description: "",
-    },
-  ],
-};
-
-
 export const SHOP_CATEGORIES = {
   categories: [
     {
@@ -285,8 +242,8 @@ export const SHOP_CATEGORIES = {
           price: 100,
           description:
             "A lightweight and compact tent for backpacking adventures.",
-            image: "/images/tent2.jpg",
-            inHowManyCarts: "+2000",
+          image: "/images/tent2.jpg",
+          inHowManyCarts: "+2000",
         },
       ],
     },

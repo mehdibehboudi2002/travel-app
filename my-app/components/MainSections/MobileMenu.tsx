@@ -62,7 +62,7 @@ const MobileMenu = ({ setMobileMenu, scrollToFooter }: MobileMenuPropsType) => {
                     <Link
                         key={link.key}
                         href={link.href}
-                        className={`mobile-menu-link w-fit my-3 regular-14 text-gray-40 transition-all hover:font-bold ${pathName === link.href && link.key !== "contact_us" ? 'active' : ''}`}
+                        className={`mobile-menu-link w-fit my-3 regular-14 text-gray-40 transition-all duration-300 hover:font-bold ${pathName === link.href && link.key !== "contact_us" ? 'active' : ''}`}
                         onClick={(e) => {
                             setMenuVisible(false);
                             setTimeout(() => {
