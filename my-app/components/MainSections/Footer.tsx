@@ -9,15 +9,27 @@ const Footer = ({ contactClicked }) => {
     const [isHighlighted, setIsHighlighted] = useState(false);
 
     useEffect(() => {
-        if (contactClicked) {
-            setTimeout(() => {
-                setIsHighlighted(true);
-            }, 690)
+        const handleScroll = () => {
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollY = window.scrollY || window.pageYOffset;
 
-            setTimeout(() => {
-                setIsHighlighted(false);
-            }, 2500);
+            if (contactClicked && (scrollY + windowHeight >= docHeight - 100)) {
+                setIsHighlighted(true);
+
+                setTimeout(() => {
+                    setIsHighlighted(false);
+                }, 2500);
+            }
+        };
+
+        if (contactClicked) {
+            window.addEventListener('scroll', handleScroll);
         }
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, [contactClicked]);
 
     return (
@@ -83,4 +95,3 @@ const Footer = ({ contactClicked }) => {
 };
 
 export default Footer;
-

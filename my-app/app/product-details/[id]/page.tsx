@@ -61,7 +61,7 @@ const ProductDetails = () => {
                 <div className="w-full flex justify-center">
                     {item.images.map((imgUrl, index) => (
                         <Image
-                            className={`${galleryAnimate && 'fade-in-animation'} size-20 sm:size-40 mt-5 mx-2 border rounded-2xl cursor-pointer ${imgUrl !== mainImg ? 'opacity-50' : ''}`}
+                            className={`${galleryAnimate && 'fade-in-animation'} size-20 sm:size-40 mt-5 mx-2 border rounded-2xl cursor-pointer ${imgUrl !== mainImg ? 'opacity-45' : ''}`}
                             key={`${imgUrl}-${index}`}
                             src={imgUrl}
                             alt={`${item.name} image`}

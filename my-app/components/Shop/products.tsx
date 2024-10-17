@@ -146,7 +146,7 @@ const ShopProducts = () => {
                   />
                 </div>
               </div>
-              <p>{itemNums[item.id] || 0}</p>
+              <p className={`${itemNums[item.id] > 0 ? 'text-green-550' : 'text-gray-300'}`}>{itemNums[item.id] || 0}</p>
             </div>
           );
         })}

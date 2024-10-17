@@ -49,9 +49,9 @@ const Features = () => {
   return (
     <section
       id="features-section"
-      className={`relative flex-col flexCenter overflow-hidden padding-container md:px-0 shadow-md`}
+      className={`relative md:-mt-[3.7rem] flex-col flexCenter overflow-hidden padding-container md:px-2 bg-cover bg-no-repeat shadow-md`}
     >
-      <div className={`w-full max-container relative flex justify-end  ${isVisible ? 'animate-show' : 'animate-hide'
+      <div className={`w-full max-container md:pt-[3.7rem] relative flex justify-end ${isVisible ? 'animate-show' : 'animate-hide'
         }`}>
         <div className="lg:min-h-[900px] flex flex-1">
           <Image
@@ -65,11 +65,11 @@ const Features = () => {
 
         <div className="w-full lg:w-[60%] z-20 flex flex-col mb-5 md:mb-8">
           <div className='relative'>
-            <h2 className="w-full xl:ml-[4.5rem] bold-32 lg:bold-64 lg:rounded-3xl ">
+            <h2 className="w-full xl:ml-[4.5rem] bold-32 lg:bold-64 lg:rounded-3xl">
               Our Features
             </h2>
           </div>
-          <ul className="mt-10 grid gap-10 md:grid-cols-2 lg:mg-20 lg:gap-20 padding-container">
+          <ul className="mt-10 2xl:mb-20 padding-container grid gap-10 md:grid-cols-2 lg:gap-20">
             {FEATURES.map((feature) => (
               <FeatureItem
                 key={feature.title}
@@ -110,4 +110,3 @@ const FeatureItem = ({ title, icon, description, color }: FeatureItemProps) => {
 };
 
 export default Features;
-

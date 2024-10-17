@@ -39,7 +39,7 @@ const Navbar = ({ onContactClick }) => {
     };
 
     return (
-        <nav className={`flex justify-between items-center padding-container bg-white border-b border-neutral-100 sticky top-0 ${!mobileMenu ? 'opacity-90' : 'opacity-100'} z-[100]`}>
+        <nav className={`flex justify-between items-center padding-container bg-white border-b border-neutral-100 sticky top-0 ${!mobileMenu ? 'opacity-90' : 'opacity-100'} z-[1000]`}>
             <Link href="/">
                 <Image src={logo} alt="logo" className="w-[60px] h-[23px] xl:w-[74px] xl:h-[29px]" />
             </Link>
@@ -83,12 +83,19 @@ const Navbar = ({ onContactClick }) => {
             </div>
 
             <div className="flex items-center lg:hidden">
+                <Link href={'/cart'} className="p-4 relative" onClick={handleCartClick}>
+                    <Image className="size-5" src={shoppingBag} alt="cart" />
+                    <div className="icon-shadow size-1 p-[.6rem] xs:p-[.7rem] rounded-full flex justify-center items-center bg-[#ff0000] text-white text-xs xs:text-sm absolute top-[.15rem] right-[.15rem] xs:top-0 xs:right-0">
+                        {totalItems}
+                    </div>
+                </Link>
+
                 <Image
                     src={menu}
                     alt="menu"
-                    width={24}
-                    height={24}
-                    className="inline-block ml-2 cursor-pointer"
+                    width={20}
+                    height={20}
+                    className="size-5 inline-block ml-2 cursor-pointer"
                     onClick={() => setMobileMenu(true)}
                 />
             </div>

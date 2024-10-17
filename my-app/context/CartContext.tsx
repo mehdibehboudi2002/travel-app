@@ -40,6 +40,9 @@ export const CartProvider = ({ children }) => {
     console.log(itemId);  
     setCart((prevCart) => {
       const item = prevCart.find((cartItem) => cartItem.id === itemId);
+      if (!item) {
+        return prevCart;
+      }
       if (item.quantity === 1) {
         return prevCart.filter((cartItem) => cartItem.id !== itemId);
       } else {
