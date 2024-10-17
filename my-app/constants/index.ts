@@ -228,22 +228,42 @@ export const SHOP_CATEGORIES = {
       id: "tents",
       products: [
         {
-          id: 1,
+          id: "Person Camping Tent",
           name: "Person Camping Tent",
           price: 150,
           description:
             "A spacious tent for up to 4 people with waterproof protection.",
           image: "/images/tent1.jpg",
           inHowManyCarts: "+2500",
+          images: [
+            "/images/tent1.jpg", "/images/test.png"
+          ],
+          details: [
+            { key: "Capacity", value: "4 people" },
+            { key: "Material", value: "Waterproof Polyester" },
+            { key: "Weight", value: "8 lbs" },
+            { key: "Dimensions", value: "10' x 8' x 6'" },
+            { key: "Color", value: "Green" },
+          ]
         },
         {
-          id: 2,
+          id: "Person Backpacking Tent",
           name: "Person Backpacking Tent",
           price: 100,
           description:
             "A lightweight and compact tent for backpacking adventures.",
           image: "/images/tent2.jpg",
           inHowManyCarts: "+2000",
+          images: [
+            "/images/tent2.jpg", "/images/test.png"
+          ],
+          details: [
+            { key: "Capacity", value: "2 people" },
+            { key: "Material", value: "Water-resistant Nylon" },
+            { key: "Weight", value: "5 lbs" },
+            { key: "Dimensions", value: "7' x 5' x 4'" },
+            { key: "Color", value: "Blue" },
+          ]
         },
       ],
     },
@@ -254,20 +274,40 @@ export const SHOP_CATEGORIES = {
       id: "cooking-gears",
       products: [
         {
-          id: 3,
+          id: "Portable Gas Stove",
           name: "Portable Gas Stove",
           price: 45,
           description: "A compact and portable stove for outdoor cooking.",
           image: "/images/cooking-gears1.jpg",
           inHowManyCarts: "+1000",
+          images: [
+            "/images/cooking-gears1.jpg", "/images/test.png"
+          ],
+          details: [
+            { key: "Fuel Type", value: "Propane" },
+            { key: "Burners", value: "Single burner" },
+            { key: "Weight", value: "1.5 lbs" },
+            { key: "Material", value: "Stainless Steel" },
+            { key: "Dimensions", value: "6' x 6' x 4'" },
+          ]
         },
         {
-          id: 4,
+          id: "Camping Cookware Set",
           name: "Camping Cookware Set",
           price: 30,
           description: "Includes pots, pans, and utensils for outdoor cooking.",
           image: "/images/cooking-gears2.jpg",
           inHowManyCarts: "+500",
+          images: [
+            "/images/cooking-gears2.jpg", "/images/test.png"
+          ],
+          details: [
+            { key: "Material", value: "Anodized Aluminum" },
+            { key: "Pieces", value: "10-piece set" },
+            { key: "Weight", value: "2 lbs" },
+            { key: "Dimensions", value: "Varies (nested for compact storage)" },
+            { key: "Color", value: "Gray" },
+          ]
         },
       ],
     },
@@ -278,20 +318,40 @@ export const SHOP_CATEGORIES = {
       id: "bags",
       products: [
         {
-          id: 5,
+          id: "Waterproof Hiking Backpack",
           name: "Waterproof Hiking Backpack",
           price: 60,
           description: "A durable and waterproof backpack for hiking trips.",
           image: "/images/bag1.jpg",
           inHowManyCarts: "+100",
+          images: [
+            "/images/bag1.jpg", "/images/test.png"
+          ],
+          details: [
+            { key: "Capacity", value: "40 liters" },
+            { key: "Material", value: "Waterproof Nylon" },
+            { key: "Weight", value: "1.2 lbs" },
+            { key: "Dimensions", value: "22' x 12' x 8'" },
+            { key: "Color", value: "Black" },
+          ]
         },
         {
-          id: 6,
+          id: "Camping Handbag",
           name: "Camping Handbag",
           price: 40,
           description: "A lightweight and foldable daypack for short trips.",
           image: "/images/bag2.jpg",
           inHowManyCarts: "+300",
+          images: [
+            "/images/bag2.jpg", "/images/test.png"
+          ],
+          details: [
+            { key: "Capacity", value: "15 liters" },
+            { key: "Material", value: "Polyester" },
+            { key: "Weight", value: "0.5 lbs" },
+            { key: "Dimensions", value: "16' x 10' x 6'" },
+            { key: "Color", value: "Red" },
+          ]
         },
       ],
     },

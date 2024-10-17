@@ -107,6 +107,7 @@ const ShopProducts = () => {
                 transition-opacity duration-500 ease-in-out
                 ${isVisible ? `fade-in-animation` : ""}`}
               style={{ transitionDelay: `${index * 0.2}s` }}
+              onClick={() => window.location.href = `/product-details/${item.id}`}
             >
               <div className="w-full flex justify-between px-5 pt-3 text-sm">
                 <p className="truncate">{item.name}</p>
@@ -117,13 +118,19 @@ const ShopProducts = () => {
                 <div className="w-full flex text-green-550">
                   <button
                     className="w-1/2 transition-all duration-200 hover:bg-green-550 hover:text-blue-70 rounded-ss-md"
-                    onClick={() => handleIncrement(item)}
+                    onClick={(e) => {
+                      e.stopPropagation(); 
+                      handleIncrement(item);
+                    }}
                   >
                     +
                   </button>
                   <button
                     className="w-1/2 transition-all duration-200 hover:bg-green-550 hover:text-blue-70 rounded-se-md"
-                    onClick={() => handleDecrement(item.id)}
+                    onClick={(e) => {
+                      e.stopPropagation(); 
+                      handleDecrement(item.id);
+                    }}
                   >
                     -
                   </button>

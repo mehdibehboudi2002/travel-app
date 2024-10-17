@@ -43,14 +43,14 @@ const Cart = () => {
 
   return (
     <div className="w-full h-fit flex padding-container my-1 lg:my-7">
-      <div className="w-1/5 h-56 hidden lg:flex flex-col justify-between items-center rounded-2xl sticky top-32 p-4 shadow-md text-blue-70 text-z">
+      <div className="w-1/5 h-56 hidden lg:flex flex-col justify-between items-center rounded-2xl sticky top-32 p-4 shadow-md text-blue-70">
         <p>Total Price: <span className="font-bold">${totalPrice}</span></p>
-        <Button type="submit" color="green" title="Finish Your Purchase" />
+        <Button type="button" color="green" title="Finish Your Purchase" />
       </div>
 
       <div className={`${smallSummaryContainerHide ? 'bg-none opacity-100' : 'small-summery bg-white opacity-90'} w-full flex lg:hidden justify-between items-center py-1 pl-1 pr-10 md:pr-11 fixed bottom-0 left-0 right-0 transition-all duration-200 z-[500]`}>
         <div className="w-fit">
-          <Button type="submit" color="green" title="Finish Your Purchase" py="py-2" px="px-4" textSize="text-xs" />
+          <Button type="button" color="green" title="Finish Your Purchase" py="py-2" px="px-4" textSize="text-xs" />
         </div>
         <p className={`text-xs ${smallSummaryContainerHide ? 'text-white' : 'text-blue-70'}`}>Total Price: <span className="font-bold">${totalPrice}</span></p>
       </div>
