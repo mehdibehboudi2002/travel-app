@@ -52,7 +52,7 @@ export const EVERY_CAMP = [
     subtitle: "Iran , Mazandaran Province",
     peopleJoined: "70+ Joined",
     description:
-      "Mountain View Camp offers an enchanting escape in the heart of nature, where breathtaking vistas meet serene wilderness. Perfect for adventure seekers and relaxation enthusiasts alike, this camp provides a unique opportunity to immerse yourself in stunning landscapes and create unforgettable memories.",
+      "One of the most beautiful bridges and architecture masterpiece in the world in that high, built by Reza Shah Pahlavi , and the amazing nature around it.",
     countOfReviews: "198k",
     qualityOfReviews: "Excellent Reviews",
     lat: 35.903429,
@@ -66,7 +66,7 @@ export const EVERY_CAMP = [
     subtitle: "Iran , Mazandaran Province",
     peopleJoined: "50+ Joined",
     description:
-      "Putuk Truno Camp Area offers an adventurous retreat surrounded by lush greenery and tranquil waterfalls. It is an ideal destination for nature lovers seeking a peaceful camping experience amidst scenic landscapes and serene trails.",
+      "From the wonders of nature, from the masterpieces of transportation, the Sawadkouh railway, which also passes throuth this region, built by Reaxa Shah Pahlavi, passes unique forest, which is also decorated with beautiful springs and waterfalls.",
     countOfReviews: "150k",
     qualityOfReviews: "Excellent Reviews",
     lat: 36.221031,
@@ -235,16 +235,14 @@ export const SHOP_CATEGORIES = {
             "A spacious tent for up to 4 people with waterproof protection.",
           image: "/images/tent1.jpg",
           inHowManyCarts: "+2500",
-          images: [
-            "/images/tent1.jpg", "/images/test.png"
-          ],
+          images: ["/images/tent1.jpg", "/images/test.png"],
           details: [
             { key: "Capacity", value: "4 people" },
             { key: "Material", value: "Waterproof Polyester" },
             { key: "Weight", value: "8 lbs" },
             { key: "Dimensions", value: "10' x 8' x 6'" },
             { key: "Color", value: "Green" },
-          ]
+          ],
         },
         {
           id: "Person Backpacking Tent",
@@ -254,16 +252,14 @@ export const SHOP_CATEGORIES = {
             "A lightweight and compact tent for backpacking adventures.",
           image: "/images/tent2.jpg",
           inHowManyCarts: "+2000",
-          images: [
-            "/images/tent2.jpg", "/images/test.png"
-          ],
+          images: ["/images/tent2.jpg", "/images/test.png"],
           details: [
             { key: "Capacity", value: "2 people" },
             { key: "Material", value: "Water-resistant Nylon" },
             { key: "Weight", value: "5 lbs" },
             { key: "Dimensions", value: "7' x 5' x 4'" },
             { key: "Color", value: "Blue" },
-          ]
+          ],
         },
       ],
     },
@@ -280,16 +276,14 @@ export const SHOP_CATEGORIES = {
           description: "A compact and portable stove for outdoor cooking.",
           image: "/images/cooking-gears1.jpg",
           inHowManyCarts: "+1000",
-          images: [
-            "/images/cooking-gears1.jpg", "/images/test.png"
-          ],
+          images: ["/images/cooking-gears1.jpg", "/images/test.png"],
           details: [
             { key: "Fuel Type", value: "Propane" },
             { key: "Burners", value: "Single burner" },
             { key: "Weight", value: "1.5 lbs" },
             { key: "Material", value: "Stainless Steel" },
             { key: "Dimensions", value: "6' x 6' x 4'" },
-          ]
+          ],
         },
         {
           id: "Camping Cookware Set",
@@ -298,16 +292,14 @@ export const SHOP_CATEGORIES = {
           description: "Includes pots, pans, and utensils for outdoor cooking.",
           image: "/images/cooking-gears2.jpg",
           inHowManyCarts: "+500",
-          images: [
-            "/images/cooking-gears2.jpg", "/images/test.png"
-          ],
+          images: ["/images/cooking-gears2.jpg", "/images/test.png"],
           details: [
             { key: "Material", value: "Anodized Aluminum" },
             { key: "Pieces", value: "10-piece set" },
             { key: "Weight", value: "2 lbs" },
             { key: "Dimensions", value: "Varies (nested for compact storage)" },
             { key: "Color", value: "Gray" },
-          ]
+          ],
         },
       ],
     },
@@ -324,16 +316,14 @@ export const SHOP_CATEGORIES = {
           description: "A durable and waterproof backpack for hiking trips.",
           image: "/images/bag1.jpg",
           inHowManyCarts: "+100",
-          images: [
-            "/images/bag1.jpg", "/images/test.png"
-          ],
+          images: ["/images/bag1.jpg", "/images/test.png"],
           details: [
             { key: "Capacity", value: "40 liters" },
             { key: "Material", value: "Waterproof Nylon" },
             { key: "Weight", value: "1.2 lbs" },
             { key: "Dimensions", value: "22' x 12' x 8'" },
             { key: "Color", value: "Black" },
-          ]
+          ],
         },
         {
           id: "Camping Handbag",
@@ -342,16 +332,14 @@ export const SHOP_CATEGORIES = {
           description: "A lightweight and foldable daypack for short trips.",
           image: "/images/bag2.jpg",
           inHowManyCarts: "+300",
-          images: [
-            "/images/bag2.jpg", "/images/test.png"
-          ],
+          images: ["/images/bag2.jpg", "/images/test.png"],
           details: [
             { key: "Capacity", value: "15 liters" },
             { key: "Material", value: "Polyester" },
             { key: "Weight", value: "0.5 lbs" },
             { key: "Dimensions", value: "16' x 10' x 6'" },
             { key: "Color", value: "Red" },
-          ]
+          ],
         },
       ],
     },
