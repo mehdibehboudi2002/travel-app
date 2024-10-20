@@ -158,7 +158,7 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
   );
 
   return (
-    <section className="relative flex flex-col pb-5 md:pb-8 px-0 xl:px-20 shadow-md">
+    <section className="relative flex flex-col pb-8 md:pb-16 px-0 xl:px-20 shadow-md">
       {!isCampDetailsPage ? <div
         className={`mx-auto sm:mx-3 xl:mx-7 pl-2 flex text-gray-40 rounded-full shadow-md transition-[width] duration-500 ease-in-out ${isSearchIconClicked ? 'w-[90%] sm:w-[50%] md:w-[37%] xl:w-[24%]' : 'w-[40px]'}`}
       >
