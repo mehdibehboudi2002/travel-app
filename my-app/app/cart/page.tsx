@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import Button from "@/components/Button/Button";
+import Image from "next/image";
 
 interface CartItem {
   id: string; 
@@ -74,7 +75,7 @@ const Cart: React.FC = () => {
                 }`}
             >
               <div className={`${visibleItems[index] ? 'cart-items-animate-show' : 'cart-items-animate-hide'} w-full hidden sm:flex items-center`}>
-                <img src={item.image} alt={item.name} className="size-40 object-cover rounded-2xl" />
+                <Image src={item.image} alt={item.name} className="size-40 object-cover rounded-2xl" />
                 <div className="w-full ml-6 flex flex-col justify-center text-gray-30">
                   <div className="w-full flex justify-between">
                     <div className="w-1/2 flex flex-col 2xs:flex-row justify-between items-center">
@@ -103,7 +104,7 @@ const Cart: React.FC = () => {
 
               <div className={`${visibleItems[index] ? 'cart-items-animate-show' : 'cart-items-animate-hide'} w-full flex sm:hidden flex-col items-center`}>
                 <div className="w-full flex justify-between">
-                  <img src={item.image} alt={item.name} className="size-40 object-cover rounded-2xl" />
+                  <Image src={item.image} alt={item.name} className="size-40 object-cover rounded-2xl" />
 
                   <div className="w-full flex flex-col justify-center text-gray-30">
                     <div className="w-full flex flex-col justify-between items-center">
