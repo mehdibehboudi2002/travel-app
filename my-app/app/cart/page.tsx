@@ -3,31 +3,39 @@ import React, { useEffect, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import Button from "@/components/Button/Button";
 
-const Cart = () => {
+interface CartItem {
+  id: string; 
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+  inHowManyCarts: number;
+}
+
+const Cart: React.FC = () => {
   const { cart, removeItemFromCart, totalPrice, addItemToCart } = useCart();
-  const [smallSummaryContainerHide, setSmallSummaryContainerHide] = useState(false);
-  const [visibleItems, setVisibleItems] = useState(Array(cart.length).fill(false));
+  const [smallSummaryContainerHide, setSmallSummaryContainerHide] = useState<boolean>(false);
+  const [visibleItems, setVisibleItems] = useState<boolean[]>(Array(cart.length).fill(false));
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
-  
+
       if (scrollTop + windowHeight >= docHeight - 100) {
         setSmallSummaryContainerHide(true);
       } else {
         setSmallSummaryContainerHide(false);
       }
     };
-  
+
     window.addEventListener('scroll', handleScroll);
-  
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
 
   useEffect(() => {
     cart.forEach((_, index) => {
@@ -37,7 +45,7 @@ const Cart = () => {
           updatedItems[index] = true;
           return updatedItems;
         });
-      }, index * 200); 
+      }, index * 200);
     });
   }, [cart]);
 
@@ -59,7 +67,7 @@ const Cart = () => {
         {cart.length === 0 ? (
           <p>Your cart is empty</p>
         ) : (
-          cart.map((item, index) => (
+          cart.map((item: CartItem, index: number) => (
             <div
               key={item.id}
               className={`w-full h-fit flex flex-col 2xs:flex-row justify-between items-center ${index === cart.length - 1 ? 'border-none' : 'border-b'} ${index === 0 ? 'pb-4' : index === cart.length - 1 ? 'pt-4' : 'py-4'
@@ -92,7 +100,6 @@ const Cart = () => {
                   </div>
                 </div>
               </div>
-
 
               <div className={`${visibleItems[index] ? 'cart-items-animate-show' : 'cart-items-animate-hide'} w-full flex sm:hidden flex-col items-center`}>
                 <div className="w-full flex justify-between">

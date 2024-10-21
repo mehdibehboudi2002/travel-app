@@ -4,11 +4,25 @@ import { SHOP_CATEGORIES } from "@/constants";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const ProductDetails = () => {
-    const [item, setItem] = useState(null);
-    const [mainImg, setMainImg] = useState(null);
-    const [galleryAnimate, setGalleryAnimate] = useState(false);
-    const { id } = useParams();
+interface ProductDetail {
+    key: string;
+    value: string;
+}
+
+interface Product {
+    id: string;
+    name: string;
+    price: number;
+    images: string[]; 
+    description: string;
+    details: ProductDetail[];
+}
+
+const ProductDetails: React.FC = () => {
+    const [item, setItem] = useState<Product | null>(null);
+    const [mainImg, setMainImg] = useState<string | null>(null);
+    const [galleryAnimate, setGalleryAnimate] = useState<boolean>(false);
+    const { id } = useParams<{ id: string }>(); 
 
     useEffect(() => {
         setGalleryAnimate(true);
@@ -20,20 +34,19 @@ const ProductDetails = () => {
         return () => clearTimeout(timer);
     }, []);
 
-
     useEffect(() => {
         if (id) {
-            let foundItem = null;
+            let foundItem: Product | null = null;
             const decodedId = decodeURIComponent(id).trim();
 
             for (const category of SHOP_CATEGORIES.categories) {
-                foundItem = category.products.find(product => product.id === decodedId);
+                foundItem = category.products.find(product => product.id === decodedId) || null;
                 if (foundItem) break;
             }
 
             if (foundItem) {
                 setItem(foundItem);
-                setMainImg(foundItem.images[0]);
+                setMainImg(foundItem.images[0] || null); 
             }
         }
     }, [id]);
@@ -52,7 +65,7 @@ const ProductDetails = () => {
                     <Image
                         key={mainImg}
                         className="fade-in-animation w-[14rem] h-[12.5rem] sm:w-[28rem] sm:h-[25rem] rounded-2xl"
-                        src={mainImg}
+                        src={mainImg || ''} 
                         alt={`${item.name} main image`}
                         width={900}
                         height={900}
@@ -61,7 +74,7 @@ const ProductDetails = () => {
                 <div className="w-full flex justify-center">
                     {item.images.map((imgUrl, index) => (
                         <Image
-                            className={`${galleryAnimate && 'fade-in-animation'} size-20 sm:size-40 mt-5 mx-2 border rounded-2xl cursor-pointer ${imgUrl !== mainImg ? 'opacity-45' : ''}`}
+                            className={`${galleryAnimate ? 'fade-in-animation' : ''} size-20 sm:size-40 mt-5 mx-2 border rounded-2xl cursor-pointer ${imgUrl !== mainImg ? 'opacity-45' : ''}`}
                             key={`${imgUrl}-${index}`}
                             src={imgUrl}
                             alt={`${item.name} image`}
@@ -73,22 +86,18 @@ const ProductDetails = () => {
                 </div>
             </div>
 
-            <label className="text-sm lg:text-base font-bold">description :</label>
+            <label className="text-sm lg:text-base font-bold">Description:</label>
             <p className="mt-2 lg:mt-1 text-xs lg:text-base">{item.description}</p>
 
             <div className="w-full padding-container mt-7">
                 {item.details.map((detail, index) => (
                     <div key={detail.key} className={`flex py-3 text-green-550 text-[.5rem] 2xs:text-xs lg:text-base ${index % 2 === 0 ? 'bg-green-100' : 'bg-white'}`}>
                         <div className="w-1/2 mx-2 flex justify-center">
-                        <p>
-                            {detail.key}
-                        </p>
+                            <p>{detail.key}</p>
                         </div>
 
                         <div className="w-1/2 mx-2 flex justify-center">
-                        <p>
-                            {detail.value}
-                        </p>
+                            <p>{detail.value}</p>
                         </div>
                     </div>
                 ))}

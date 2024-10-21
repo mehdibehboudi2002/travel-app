@@ -7,30 +7,41 @@ import arrowLeft from "../../public/images/arrow-left.svg";
 import { useEffect, useState } from "react";
 import { useCart } from "@/context/CartContext";
 
+type ItemNum = {
+  [key: string]: number;
+};
+
 const ShopProducts = () => {
-  const [itemNums, setItemNums] = useState({});
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isSearchIconClicked, setIsSearchIconClicked] = useState(false);
-  const { category } = useParams();
+  const [itemNums, setItemNums] = useState<ItemNum>({});
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [isSearchIconClicked, setIsSearchIconClicked] = useState<boolean>(false);
+  const { category } = useParams<{ category: string }>();
   const selectedCategory = SHOP_CATEGORIES.categories.find(
     (cat) => cat.category === category
   );
 
   const { addItemToCart, removeItemFromCart, cart } = useCart();
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
     setIsVisible(true);
 
-    const nums = {};
+    const nums: ItemNum = {};
     cart.forEach((item) => {
       nums[item.id] = item.quantity;
     });
     setItemNums(nums);
   }, [cart]);
 
-  const handleIncrement = (item) => {
+  const handleIncrement = (item: {
+    id: string;
+    name: string;
+    price: number;
+    quantity: number;
+    image: string;
+    inHowManyCarts: number;
+  }) => {
     addItemToCart(item);
     setItemNums((prevNums) => ({
       ...prevNums,
@@ -38,7 +49,7 @@ const ShopProducts = () => {
     }));
   };
 
-  const handleDecrement = (itemId) => {
+  const handleDecrement = (itemId: string) => {
     removeItemFromCart(itemId);
     setItemNums((prevNums) => ({
       ...prevNums,
@@ -71,7 +82,7 @@ const ShopProducts = () => {
             alt="close"
             onClick={() => {
               setIsSearchIconClicked(false);
-              setSearchTerm(""); 
+              setSearchTerm("");
             }}
           />
         )}
@@ -87,12 +98,11 @@ const ShopProducts = () => {
         )}
       </div>
       <div className="size-full flex justify-center flex-wrap my-0 lg:my-6">
-        {filteredProducts.map((item, index) => {
+        {filteredProducts?.map((item, index) => {
           const itemsPerRow = 4;
           const isLastRow =
             index >=
-            filteredProducts.length -
-            (filteredProducts.length % itemsPerRow || itemsPerRow);
+            filteredProducts.length - (filteredProducts.length % itemsPerRow || itemsPerRow);
           const isLastColumn = (index + 1) % itemsPerRow === 0;
           const isLastInLastRow =
             isLastRow && (index + 1) === filteredProducts.length;
@@ -119,7 +129,7 @@ const ShopProducts = () => {
                   <button
                     className="w-1/2 transition-all duration-200 hover:bg-green-550 hover:text-blue-70 rounded-ss-md"
                     onClick={(e) => {
-                      e.stopPropagation(); 
+                      e.stopPropagation();
                       handleIncrement(item);
                     }}
                   >
@@ -128,7 +138,7 @@ const ShopProducts = () => {
                   <button
                     className="w-1/2 transition-all duration-200 hover:bg-green-550 hover:text-blue-70 rounded-se-md"
                     onClick={(e) => {
-                      e.stopPropagation(); 
+                      e.stopPropagation();
                       handleDecrement(item.id);
                     }}
                   >
@@ -156,7 +166,4 @@ const ShopProducts = () => {
 };
 
 export default ShopProducts;
-
-
-
 

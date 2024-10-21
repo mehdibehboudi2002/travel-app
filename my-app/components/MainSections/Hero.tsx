@@ -9,7 +9,7 @@ import BasicRating from "../Rating";
 type HeroProps = {
   isCampDetailsPage?: boolean;
   campName?: string;
-  countOfReviews?: string;
+  countOfReviews?: number;
   qualityOfReviews?: string;
   hasDescription?: boolean;
   description?: string;
@@ -53,7 +53,7 @@ const Hero = ({ isCampDetailsPage, countOfReviews, qualityOfReviews, campName, h
           {isCampDetailsPage && <div className="flex flex-wrap gap-5">
             <div className="flex flex-col gap-2">
             <BasicRating ratable={true} ratingTxt="Your Reviews" className="mt-8"/>
-              <BasicRating ratable={false} ratingTxt={`${countOfReviews} ${qualityOfReviews}`} className="mt-8"/>
+              <BasicRating ratable={false} ratingTxt={`${`${countOfReviews}k`} ${qualityOfReviews}`} className="mt-8"/>
             </div>
 
           </div>}

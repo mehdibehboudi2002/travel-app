@@ -132,26 +132,28 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
   useEffect(() => {
     if (searchTerm) {
       const matchingCamps = EVERY_CAMP.filter((camp) =>
-        camp.title.toLowerCase().includes(searchTerm.toLowerCase())
+        typeof camp.title === 'string' && camp.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
       const matchingIndex = EVERY_CAMP.findIndex((camp) =>
-        camp.title.toLowerCase().includes(searchTerm.toLowerCase())
+        typeof camp.title === 'string' && camp.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
       if (matchingCamps.length > 0) {
         setIsPaused(true);
         const scrollContainer = scrollRef.current;
 
-        const campWidth = scrollContainer?.children[matchingIndex]?.clientWidth || 0;
-        scrollContainer.scrollLeft = matchingIndex * campWidth;
+        if (scrollContainer) {
+          const campWidth = scrollContainer?.children[matchingIndex]?.clientWidth || 0;
+          scrollContainer.scrollLeft = matchingIndex * campWidth;
+        }
       }
     } else {
       setIsPaused(false);
     }
   }, [searchTerm]);
 
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
 
   const targetCamp = EVERY_CAMP.find((item) =>
     item?.id && id && item.id.toLowerCase().replace(/\s+/g, "-") === id.toLowerCase()
@@ -232,7 +234,7 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
                 title={targetCamp.title}
                 subtitle={targetCamp.subtitle}
                 peopleJoined={targetCamp.peopleJoined}
-               searchTerm={searchTerm}
+                searchTerm={searchTerm}
                 onClick={handleClick(targetCamp.id.toLowerCase().replace(/\s+/g, "-"))}
                 isCampDetailsPage={isCampDetailsPage}
               />

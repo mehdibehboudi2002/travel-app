@@ -53,7 +53,7 @@ export const EVERY_CAMP = [
     peopleJoined: "70+ Joined",
     description:
       "One of the most beautiful bridges and architecture masterpiece in the world in that high, built by Reza Shah Pahlavi , and the amazing nature around it.",
-    countOfReviews: "198k",
+    countOfReviews: 198,
     qualityOfReviews: "Excellent Reviews",
     lat: 35.903429,
     lng: 52.990879,
@@ -66,8 +66,8 @@ export const EVERY_CAMP = [
     subtitle: "Iran , Mazandaran Province",
     peopleJoined: "50+ Joined",
     description:
-      "From the wonders of nature, from the masterpieces of transportation, the Sawadkouh railway, which also passes throuth this region, built by Reaxa Shah Pahlavi, passes unique forest, which is also decorated with beautiful springs and waterfalls.",
-    countOfReviews: "150k",
+      "From the wonders of nature, from the masterpieces of transportation, the Sawadkouh railway, which also passes throuth this region, built by Reza Shah Pahlavi, passes unique forest, which is also decorated with beautiful springs and waterfalls.",
+    countOfReviews: 150,
     qualityOfReviews: "Excellent Reviews",
     lat: 36.221031,
     lng: 52.809999,

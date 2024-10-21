@@ -17,13 +17,24 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
+type CampType = {
+  id: string;
+  title: string;
+  description: string;
+  lat: number;
+  lng: number;
+  countOfReviews: number;
+  qualityOfReviews: string;
+};
+
 export default function CampPage() {
   const { id } = useParams();
-  const selectedCamp = EVERY_CAMP.find(camp => camp.id.toLowerCase().replace(/\s+/g, '-') === id);
+  const selectedCamp: CampType | undefined = EVERY_CAMP.find(
+    (camp) => camp.id.toLowerCase().replace(/\s+/g, '-') === id
+  );
 
-  const [userLocation, setUserLocation] = useState(null);
-  const routingControlRef = useRef(null);
-
+  const [userLocation, setUserLocation] = useState<L.LatLng | null>(null);
+  const routingControlRef = useRef<L.Routing.Control | null>(null);
 
   const LocationMarker = () => {
     useMapEvents({
@@ -34,16 +45,15 @@ export default function CampPage() {
 
     return userLocation ? (
       <Marker position={userLocation}>
-        <Popup> Beginning </Popup>
+        <Popup>Beginning</Popup>
       </Marker>
     ) : null;
   };
 
-
   const RoutingControl = () => {
     const map = useMap();
-    useEffect(() => {
 
+    useEffect(() => {
       if (routingControlRef.current) {
         try {
           map.removeControl(routingControlRef.current);
@@ -53,7 +63,6 @@ export default function CampPage() {
           console.error(err);
         }
       }
-
 
       if (userLocation && selectedCamp) {
         routingControlRef.current = L.Routing.control({
@@ -69,34 +78,43 @@ export default function CampPage() {
     return null;
   };
 
-  return (<>
-    <section className='pb-8 lg:pb-16 shadow-md'>
-      <Hero
-        isCampDetailsPage={true}
-        campName={selectedCamp?.title}
-        hasButton={true}
-        hasDescription={true}
-        description={selectedCamp?.description}
-        countOfReviews={selectedCamp?.countOfReviews}
-        qualityOfReviews={selectedCamp?.qualityOfReviews}
-      />
-      <Camp isCampDetailsPage={true} />
+  return (
+    <>
+      <section className="pb-8 lg:pb-16 shadow-md">
+        <Hero
+          isCampDetailsPage={true}
+          campName={selectedCamp?.title}
+          hasButton={true}
+          hasDescription={true}
+          description={selectedCamp?.description}
+          countOfReviews={selectedCamp?.countOfReviews}
+          qualityOfReviews={selectedCamp?.qualityOfReviews}
+        />
+        <Camp isCampDetailsPage={true} />
 
-      <div className='w-full h-[340px] lg:h-[80vh] lg:padding-container mt-8 md:mt-14 lg:mt-16'>
-        <MapContainer className='size-full lg:rounded-5xl z-50' center={[selectedCamp.lat, selectedCamp.lng]} zoom={13} scrollWheelZoom={true} style={{ height: '100%', width: '100%' }}>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          <Marker position={[selectedCamp.lat, selectedCamp.lng]}>
-            <Popup>{selectedCamp.title}</Popup>
-          </Marker>
-          <LocationMarker />
-          <RoutingControl />
-        </MapContainer>
-      </div>
-    </section>
-    <GetApp isGetAppDetailsPage={true} />
-  </>
+        <div className="w-full h-[340px] lg:h-[80vh] lg:padding-container mt-8 md:mt-14 lg:mt-16">
+          <MapContainer
+            className="size-full lg:rounded-5xl z-50"
+            center={[selectedCamp?.lat ?? 0, selectedCamp?.lng ?? 0]}
+            zoom={13}
+            scrollWheelZoom={true}
+            style={{ height: '100%', width: '100%' }}
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            {selectedCamp && (
+              <Marker position={[selectedCamp.lat, selectedCamp.lng]}>
+                <Popup>{selectedCamp.title}</Popup>
+              </Marker>
+            )}
+            <LocationMarker />
+            <RoutingControl />
+          </MapContainer>
+        </div>
+      </section>
+      <GetApp />
+    </>
   );
-}    
+}

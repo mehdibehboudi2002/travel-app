@@ -1,27 +1,50 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useContext, useEffect, ReactNode } from "react";
 
-const CartContext = createContext();
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+  inHowManyCarts: number;
+}
 
-export const CartProvider = ({ children }) => {
-  const initialCart = JSON.parse(localStorage.getItem("cart")) || [];
-  const [cart, setCart] = useState(initialCart);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [totalItems, setTotalItems] = useState(0);
+interface CartContextType {
+  cart: CartItem[];
+  addItemToCart: (item: CartItem) => void;
+  removeItemFromCart: (itemId: string) => void;
+  totalPrice: number;
+  totalItems: number;
+}
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+interface CartProviderProps {
+  children: ReactNode;
+}
+
+export const CartProvider = ({ children }: CartProviderProps) => {
+  const initialCart: CartItem[] = JSON.parse(localStorage.getItem("cart") || "[]");
+  const [cart, setCart] = useState<CartItem[]>(initialCart);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [totalItems, setTotalItems] = useState<number>(0);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   useEffect(() => {
-    const total = cart.reduce((sum, item) => sum + (Number(item.price) * (item.quantity || 0)), 0);
+    const total = cart.reduce(
+      (sum, item) => sum + Number(item.price) * (item.quantity || 0),
+      0
+    );
     setTotalPrice(total);
-    
+
     const items = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
     setTotalItems(items);
   }, [cart]);
 
-  const addItemToCart = (item) => {
-    console.log(item);  
+  const addItemToCart = (item: CartItem) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
       if (existingItem) {
@@ -35,14 +58,12 @@ export const CartProvider = ({ children }) => {
       }
     });
   };
-  
-  const removeItemFromCart = (itemId) => {
-    console.log(itemId);  
+
+  const removeItemFromCart = (itemId: string) => {
     setCart((prevCart) => {
       const item = prevCart.find((cartItem) => cartItem.id === itemId);
-      if (!item) {
-        return prevCart;
-      }
+      if (!item) return prevCart;
+
       if (item.quantity === 1) {
         return prevCart.filter((cartItem) => cartItem.id !== itemId);
       } else {
@@ -62,6 +83,10 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-export const useCart = () => {
-  return useContext(CartContext);
+export const useCart = (): CartContextType => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
+  return context;
 };
