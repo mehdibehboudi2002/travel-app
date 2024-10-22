@@ -1,4 +1,3 @@
-"use client";
 import ShopProducts from "@/components/Shop/products";
 import { SHOP_CATEGORIES } from "@/constants";
 

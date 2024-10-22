@@ -7,7 +7,7 @@ import quote from "../../public/images/quote.svg";
 import searchIcon from "../../public/images/search.svg";
 import arrowLeft from "../../public/images/arrow-left.svg";
 import campIcon from "../../public/images/camp.svg";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 type CampProps = {
   isCampDetailsPage: boolean;
@@ -82,9 +82,12 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
   const [isPaused, setIsPaused] = useState(false);
   const speed = 2;
   let clickTimeout: NodeJS.Timeout | null = null;
+  const router = useRouter();
 
   const handleSingleClick = (slugifiedTitle: string) => {
-    window.location.href = `${slugifiedTitle}`;
+    if (typeof window !== "undefined") { 
+      router.push(`/${slugifiedTitle}`);
+    }
   };
 
   const handleDoubleClick = () => {
@@ -127,7 +130,6 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
 
     return () => clearInterval(interval);
   }, [isPaused]);
-
 
   useEffect(() => {
     if (searchTerm) {

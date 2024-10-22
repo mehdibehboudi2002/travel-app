@@ -6,7 +6,6 @@ interface CartItem {
   price: number;
   quantity: number;
   image: string;
-  inHowManyCarts: number;
 }
 
 interface CartContextType {
@@ -24,23 +23,31 @@ interface CartProviderProps {
 }
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const initialCart: CartItem[] = JSON.parse(localStorage.getItem("cart") || "[]");
-  const [cart, setCart] = useState<CartItem[]>(initialCart);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    if (typeof window !== 'undefined') {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    }
+    return []; 
+  });
+  
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [totalItems, setTotalItems] = useState<number>(0);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
   }, [cart]);
 
   useEffect(() => {
     const total = cart.reduce(
-      (sum, item) => sum + Number(item.price) * (item.quantity || 0),
+      (sum, item) => sum + item.price * item.quantity,
       0
     );
     setTotalPrice(total);
 
-    const items = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+    const items = cart.reduce((sum, item) => sum + item.quantity, 0);
     setTotalItems(items);
   }, [cart]);
 
