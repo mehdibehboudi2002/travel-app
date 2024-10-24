@@ -37,10 +37,14 @@ const CampSite = ({
 
   return (
     <div
-      onClick={onClick}
-      className={`w-full h-full min-w-[1100px] mb-10 bg-cover bg-no-repeat lg:rounded-r-5xl 2xl:rounded-5xl`}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
+    onClick={onClick}
+    className={`w-full h-full min-w-[1100px] mb-10 bg-center bg-no-repeat lg:rounded-r-5xl 2xl:rounded-5xl`}
+    style={{
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: '100% 100%',  
+    }}
+  >
+  
       <div className="flex h-full flex-col items-start justify-between p-6 lg:px-20 lg:py-8">
         <div className="flexCenter gap-4">
           {!isCampDetailsPage && <div className="rounded-full bg-green-550 p-4">
@@ -83,7 +87,6 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
   const [isPaused, setIsPaused] = useState(false);
   const speed = 2;
   let clickTimeout: NodeJS.Timeout | null = null;
-  const router = useRouter();
 
   const handleSingleClick = (slugifiedTitle: string) => {
     if (typeof window !== "undefined") {
