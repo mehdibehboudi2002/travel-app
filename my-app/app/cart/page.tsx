@@ -5,12 +5,12 @@ import Button from "@/components/Button/Button";
 import Image from "next/image";
 
 interface CartItem {
-  id: string; 
+  id: string;
   name: string;
   price: number;
   quantity: number;
   image: string;
-  inHowManyCarts: number;
+  inHowManyCarts?: number;
 }
 
 const Cart: React.FC = () => {
@@ -66,7 +66,7 @@ const Cart: React.FC = () => {
 
       <div className="w-full lg:w-4/5 flex flex-col items-center lg:ml-10 text-xs lg:text-base">
         {cart.length === 0 ? (
-          <p>Your cart is empty</p>
+          <p className="text-[#ff5a00]">Your cart is empty</p>
         ) : (
           cart.map((item: CartItem, index: number) => (
             <div
@@ -75,7 +75,7 @@ const Cart: React.FC = () => {
                 }`}
             >
               <div className={`${visibleItems[index] ? 'cart-items-animate-show' : 'cart-items-animate-hide'} w-full hidden sm:flex items-center`}>
-                <Image src={item.image} alt={item.name} className="size-40 object-cover rounded-2xl" />
+                <Image src={item.image} alt={item.name} className="size-40 object-cover rounded-2xl" width={160} height={160} />
                 <div className="w-full ml-6 flex flex-col justify-center text-gray-30">
                   <div className="w-full flex justify-between">
                     <div className="w-1/2 flex flex-col 2xs:flex-row justify-between items-center">
@@ -104,7 +104,7 @@ const Cart: React.FC = () => {
 
               <div className={`${visibleItems[index] ? 'cart-items-animate-show' : 'cart-items-animate-hide'} w-full flex sm:hidden flex-col items-center`}>
                 <div className="w-full flex justify-between">
-                  <Image src={item.image} alt={item.name} className="size-40 object-cover rounded-2xl" />
+                  <Image src={item.image} alt={item.name} className="size-40 object-cover rounded-2xl" width={160} height={160} />
 
                   <div className="w-full flex flex-col justify-center text-gray-30">
                     <div className="w-full flex flex-col justify-between items-center">

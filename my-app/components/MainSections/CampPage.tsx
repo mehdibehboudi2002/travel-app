@@ -1,16 +1,19 @@
 "use client";
 import { useState, useRef, useEffect } from 'react';
-import dynamic from 'next/dynamic';
+import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import 'leaflet-routing-machine';
 import Hero from '@/components/MainSections/Hero';
 import Camp from '@/components/MainSections/Camp';
 import GetApp from '@/components/MainSections/GetApp';
 
-import { useMap, useMapEvents } from 'react-leaflet';
-
-const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false });
-const TileLayer = dynamic(() => import('react-leaflet').then(mod => mod.TileLayer), { ssr: false });
-const Marker = dynamic(() => import('react-leaflet').then(mod => mod.Marker), { ssr: false });
-const Popup = dynamic(() => import('react-leaflet').then(mod => mod.Popup), { ssr: false });
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
 
 type CampType = {
   id: string;
@@ -28,27 +31,11 @@ interface CampPageProps {
 
 export default function CampPageClient({ selectedCamp }: CampPageProps) {
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const routingControlRef = useRef<any>(null);
-  const [L, setL] = useState<any>(null);
-
-  useEffect(() => {
-    import('leaflet').then((leaflet) => {
-      import('leaflet-routing-machine');
-
-      setL(leaflet);
-
-      delete leaflet.Icon.Default.prototype._getIconUrl;
-      leaflet.Icon.Default.mergeOptions({
-        iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-        iconUrl: require('leaflet/dist/images/marker-icon.png'),
-        shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-      });
-    });
-  }, []);
+  const routingControlRef = useRef<L.Routing.Control | null>(null);
 
   const LocationMarker = () => {
-    const map = useMapEvents({
-      click(e) {
+    useMapEvents({
+      click(e: L.LeafletMouseEvent) {
         setUserLocation(e.latlng);
       },
     });
@@ -64,8 +51,6 @@ export default function CampPageClient({ selectedCamp }: CampPageProps) {
     const map = useMap();
 
     useEffect(() => {
-      if (!L) return;
-
       if (routingControlRef.current) {
         try {
           map.removeControl(routingControlRef.current);
@@ -85,7 +70,7 @@ export default function CampPageClient({ selectedCamp }: CampPageProps) {
           routeWhileDragging: true,
         }).addTo(map);
       }
-    }, [userLocation, selectedCamp, map, L]);
+    }, [userLocation, selectedCamp, map]);
 
     return null;
   };
@@ -104,8 +89,8 @@ export default function CampPageClient({ selectedCamp }: CampPageProps) {
         />
         <Camp isCampDetailsPage={true} />
 
-        <div className="w-full h-[340px] lg:h-[80vh] lg:padding-container mt-8 md:mt-14 lg:mt-16">
-          {L && selectedCamp && (
+        <div className="w-full h-[46.070460704607044vh] lg:h-[80vh] lg:padding-container mt-8 md:mt-14 lg:mt-16">
+          {selectedCamp && (
             <MapContainer
               className="size-full lg:rounded-5xl z-50"
               center={[selectedCamp.lat, selectedCamp.lng]}
@@ -117,11 +102,9 @@ export default function CampPageClient({ selectedCamp }: CampPageProps) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               />
-              {selectedCamp && (
-                <Marker position={[selectedCamp.lat, selectedCamp.lng]}>
-                  <Popup>{selectedCamp.title}</Popup>
-                </Marker>
-              )}
+              <Marker position={[selectedCamp.lat, selectedCamp.lng]}>
+                <Popup>{selectedCamp.title}</Popup>
+              </Marker>
               <LocationMarker />
               <RoutingControl />
             </MapContainer>

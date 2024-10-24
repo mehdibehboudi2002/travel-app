@@ -3,6 +3,7 @@ import { useParams } from "next/navigation";
 import { SHOP_CATEGORIES } from "@/constants";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Spinner from "@/components/Spinner";
 
 interface ProductDetail {
     key: string;
@@ -52,7 +53,9 @@ const ProductDetails: React.FC = () => {
     }, [id]);
 
     if (!item) {
-        return <p>Loading product details...</p>;
+        return (<div className="my-7">
+            <Spinner/>
+        </div>)
     }
 
     return (

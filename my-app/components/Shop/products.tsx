@@ -117,7 +117,9 @@ const ShopProducts = () => {
                 transition-opacity duration-500 ease-in-out
                 ${isVisible ? `fade-in-animation` : ""}`}
               style={{ transitionDelay: `${index * 0.2}s` }}
-              onClick={() => window.location.href = `/product-details/${item.id}`}
+              onClick={() => {
+                window.open(`/product-details/${item.id}`, '_blank');
+              }}
             >
               <div className="w-full flex justify-between px-5 pt-3 text-sm">
                 <p className="truncate">{item.name}</p>

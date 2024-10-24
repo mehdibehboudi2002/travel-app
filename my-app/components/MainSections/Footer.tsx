@@ -4,7 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useRef, useState, useEffect } from 'react';
 
-const Footer = ({ contactClicked }) => {
+interface FooterProps {
+    contactClicked: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ contactClicked }) => {
     const ContactUsSection = useRef(null);
     const [isHighlighted, setIsHighlighted] = useState(false);
 

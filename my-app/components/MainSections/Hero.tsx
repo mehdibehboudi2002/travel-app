@@ -26,10 +26,10 @@ const Hero = ({ isCampDetailsPage, countOfReviews, qualityOfReviews, campName, h
   }, [])
 
   return (
-    <section className={`padding-container mt-1 md:mt-5 ${isCampDetailsPage ? 'mb-24 sm:mb-52' : 'mb-10 xs:mb-28 2xs:mb-40 sm:mb-80 xl:mb-36'} pt-10 pb-32`}>
+    <section className={`padding-container mt-1 md:mt-5 ${isCampDetailsPage ? 'mb-10 2xs:mb-24 sm:mb-52' : 'mb-10 xs:mb-28 2xs:mb-40 sm:mb-80 xl:mb-36'} pt-10 pb-32`}>
       <div className="hero-map"></div>
 
-      <div className={`flex flex-col items-center xs:items-start gap-10 transition-all duration-1000 ${heroAnimate ? 'opacity-1 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+      <div className={`flex flex-col items-center xs:items-start gap-10 transition-all duration-1000 ${heroAnimate ? '' : 'opacity-0 translate-x-10'}`}>
         <div className="w-full xl:w-1/2 relative z-20 flex flex-1 flex-col">
           <div className="w-full flex flex-col">
             <Image
@@ -44,10 +44,6 @@ const Hero = ({ isCampDetailsPage, countOfReviews, qualityOfReviews, campName, h
           {hasDescription && <p className="xl:max-w-[520px] mt-6 regular-16 text-gray-30">
             {description}
           </p>}
-
-          
-            
-          
 
 
           {isCampDetailsPage && <div className="flex flex-wrap gap-5">

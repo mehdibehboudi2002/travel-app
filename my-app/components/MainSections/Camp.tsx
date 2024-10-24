@@ -8,6 +8,7 @@ import searchIcon from "../../public/images/search.svg";
 import arrowLeft from "../../public/images/arrow-left.svg";
 import campIcon from "../../public/images/camp.svg";
 import { useParams, useRouter } from "next/navigation";
+import Spinner from "../Spinner";
 
 type CampProps = {
   isCampDetailsPage: boolean;
@@ -85,8 +86,8 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
   const router = useRouter();
 
   const handleSingleClick = (slugifiedTitle: string) => {
-    if (typeof window !== "undefined") { 
-      router.push(`/${slugifiedTitle}`);
+    if (typeof window !== "undefined") {
+      window.open(`/${slugifiedTitle}`, "_blank");
     }
   };
 
@@ -242,7 +243,7 @@ const Camp = ({ isCampDetailsPage }: CampProps) => {
               />
             ))
           ) : (
-            <p>Loading camp information...</p>
+            (<Spinner />)
           )}
 
         </div>}

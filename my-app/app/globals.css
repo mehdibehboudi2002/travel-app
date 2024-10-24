@@ -47,7 +47,6 @@ body{
     z-index: 1;
   }
 
-
   .btn_hover {
     position: relative;
   }
@@ -222,4 +221,20 @@ body{
 
 .no-scroll {
   overflow: hidden;
+}
+
+.spinner {
+  background: radial-gradient(farthest-side,#30af5b 94%,#0000) top/9px 9px no-repeat,
+              conic-gradient(#0000 30%,#30af5b);
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 9px),#000 0);
+  animation: spinner-c7wet2 1s infinite linear;
+}
+
+@keyframes spinner-c7wet2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
